@@ -13522,7 +13522,7 @@ Error message and password prompt
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20190911074330275" creator="ckshadow" list="[[NVidia Jetson Nano Vs RPi4B]] 關於我們" modified="20190911074330275" modifier="ckshadow" title="$:/StoryList">
+<div created="20190912012618569" creator="ckshadow" list="AI導論（中） AI導論（下） AI導論（上） 關於我們" modified="20190912012621504" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -13544,15 +13544,15 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://ck951248.github.io/&quot;
+            &quot;text&quot;: &quot;https://playrobotwiki.github.io/&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;ck951248.github.io&quot;
+            &quot;text&quot;: &quot;playrobotwiki.github.io&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;ck951248.github.io&quot;
+            &quot;text&quot;: &quot;playrobotwiki.github.io&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
@@ -13572,7 +13572,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;https://ck951248.github.io&quot;
+            &quot;text&quot;: &quot;https://playrobotwiki.github.io&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -14915,7 +14915,7 @@ print(str([[0]*(i-3) + [1]*(2-(i-5)*2+1) + [0]*(i-3) if i&gt;3 else [0]*(2-i+1) 
 
 （完）</pre>
 </div>
-<div created="20190910004531084" creator="ckshadow" modified="20190910015226963" modifier="ckshadow" tags="Python學堂" title="AI導論（中）">
+<div created="20190910004531084" creator="ckshadow" modified="20190912013027072" modifier="ckshadow" tags="Python學堂" title="AI導論（中）">
 <pre>!! ''第一次發展''
 
 在1956年的達特茅斯會議後，AI開始了第一次黃金發展期，當時出現了許多的解題以及自然語言模型，大多數人皆對AI的發展感到十分樂觀，也有大批的資金挹注開發。
@@ -14950,11 +14950,9 @@ print(str([[0]*(i-3) + [1]*(2-(i-5)*2+1) + [0]*(i-3) if i&gt;3 else [0]*(2-i+1) 
 
 ''對抗樣本攻擊''
 
-[img[https://i1.kknews.cc/SIG=f10j4b/1qp700049o607nqq236s.jpg]]
+[img[https://i.imgur.com/WewbHTY.png]]
 
-資料來源：https://kknews.cc/tech/39kexla.html
-
-首先用一種對人類而言看起來像是雜訊的信號（實際上是經過設計的）「污染」訓練集的圖片，比如上圖左側中狗的照片，得到上圖右側的照片，對我們人類而言看起來還是狗。用原始訓練集訓練模型後，模型識別下圖有 97.8% 的機率是「狗」；而用被「污染」過的圖片和標籤訓練模型之後，模型會把下圖顯然的狗標記為「魚」，機器認為準確度為 69.7%。
+首先用一種對人類而言看起來像是雜訊的信號（實際上是經過設計的）「污染」訓練集的圖片，比如上圖中貓的照片實際上就是透過程式加入了雜訊－－儘管很微小。對我們人類而言看起來還是貓。用原本的圖片測試模型，模型識別有 92.6% 的機率是「貓」（實際上他分出了很多種類的貓，加總所有是貓的名稱之後為此機率）；而用被「污染」過的圖片測試模型，模型會把上圖顯然是貓的照片標記為「烤土司機」，機器認為準確度為 97.8%。
 
 （關於對抗攻擊的例子很多，請自行google）
 
