@@ -429,6 +429,8 @@ Error message and password prompt
 
 <li>亮度、壓力感測</li>
 
+<li>為何python中沒有switch/case？</li>
+
 <li>氣體感測</li>
 
 <li>創客版AIoT智能音箱</li>
@@ -13522,7 +13524,7 @@ Error message and password prompt
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div list="AI導論（中）" title="$:/StoryList">
+<div created="20190919011447618" creator="ckshadow" list="Python學堂 關於我們" modified="20190919013520472" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -14611,6 +14613,66 @@ print([‘fizzbuzz’ if i%15==0 else ‘buzz’ if i%5 == 0 else ‘fizz’ if 
 </div>
 <div created="20190902070657314" modified="20190902070702027" tags="感測器" title="亮度、壓力感測">
 <pre></pre>
+</div>
+<div created="20190919011449683" creator="ckshadow" modified="20190919021937786" modifier="ckshadow" tags="Python學堂" title="為何python中沒有switch/case？">
+<pre>有趣的事情是，當我們問官方這個問題的時候，官方會如此回答：
+
+「以if....elif對可以簡單地達成這件事情，而對於複雜函數映射也可以使用字典結構。」
+
+所以我說那個醬汁......不是，我說那個回答呢？
+
+官方給的答案有點像在告訴我們「我們不需要那東西，我們有其他實現方法」。
+
+我們先來看一下C的switch方式：
+
+```C
+function(args){
+    switch(args) {
+        case 0:
+            return &quot;zero&quot;;
+        case 1:
+            return &quot;one&quot;;
+        case 2:
+            return &quot;two&quot;;
+        default:
+            return &quot;nothing&quot;;
+    };
+};
+```
+
+接著來看一下在python中使用if/elif對的狀況：
+
+```python
+def numbers_to_strings(args):
+    if args == 0 : return 'zero'
+    elif args == 1 : return 'one'
+    elif args == 2 : return 'two'
+    else : return 'nothing'
+```
+
+最後看一下python中使用字典映射的狀況：
+
+```python
+def numbers_to_strings(args):
+    switcher = {0:'zero', 1:'one', 2:'two'}
+    return switcher.get(args, 'nothing')
+```
+
+......好吧，是我也不用switch了（X
+
+我們不會跨語言比較速度，因為這沒什麼意義。但我們還是可以分語言比較一下內部的演算規則。對於C的switch，他的速度取決於args值的連續性，當你值很分散的時候，他的速度和if/else對相差不遠；但當遇到大量連續值的case時，switch case會快上很多。
+
+然後C語言要注意，如果非直接return時，case一般得謹慎搭配break避免Fall Through發生。而更令人痛苦的是，有些Fall是故意穿過的，但接手程式的人不見得能理解為什麼需要穿過。
+
+python的字典本質是一個hash的實現，不論字典的大小，都是hash之後直接對應鍵值－－當然大到一個很誇張的程度的話或許會開始碰撞，這時候就會變慢了。因此，字典的速度幾乎是穩定的常數時間複雜度，到這邊我們一般有「非必要不用if/elif機制」的共識。
+
+python的字典映射機制帶來了一些額外好處，尤其是我們需要增減case條件的時候。畢竟，字典本體都固定在某一個地方－－要去除掉某個case，或者是新加入某個case，只需要新增一個鍵值對應即可，不需要到底下去挖出那串switch碼，程式也會比較好看一點。
+
+另外一個好處是在動態新增的時候。舉顆栗子，我們在智慧音箱介面中使用的全句對應模型，其中如果每一句都if......else，那動態新增就很痛苦了；如果使用列表，再使用for迴圈去遍歷（研習時示範的程式），問題是解決了，但速度會隨著列表變長而變慢；而最後製作成介面的方法，使用字典對應使大多數狀況為常數複雜度，並且可以在程式執行期間新增或刪減。
+
+額外好處是字典形式可以用json格式直接輸出，存儲跟讀取很方便。
+
+因此我們或許會得到這個總結：python不需要使用switch，他有更漂亮的實現方法。</pre>
 </div>
 <div created="20190902070708491" modified="20190902070714298" tags="感測器" title="氣體感測">
 <pre></pre>
