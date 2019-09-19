@@ -481,6 +481,10 @@ Error message and password prompt
 
 <li>Playpython Learn Board</li>
 
+<li>playrobot函式庫介紹（語音類）</li>
+
+<li>playrobot函式庫介紹（機器人類）</li>
+
 <li>python之「禪」</li>
 
 <li>Python學堂</li>
@@ -13524,7 +13528,7 @@ Error message and password prompt
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20190919011447618" creator="ckshadow" list="Python學堂 關於我們" modified="20190919013520472" modifier="ckshadow" title="$:/StoryList">
+<div created="20190919023201424" creator="ckshadow" list="Python學堂 playrobot函式庫介紹（機器人類） playrobot函式庫介紹（語音類） 為何python中沒有switch/case？ 關於我們" modified="20190919033845360" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15326,6 +15330,119 @@ NV板自體可以跑神經網路，甚至訓練都有辦法執行。程式碼也
 </div>
 <div created="20190902071216667" modified="20190902071233901" tags="擴充板" title="Playpython Learn Board">
 <pre></pre>
+</div>
+<div created="20190919051329182" creator="ckshadow" modified="20190919053524401" modifier="ckshadow" tags="Python學堂" title="playrobot函式庫介紹（語音類）">
+<pre>相信參加過我們舉辦的研習，都會對我們語音課程使用了自有函式庫的事情有所印象
+
+發布也一段時間了，但一直苦於pypi編輯很難及時看到更動內容，且不是很熟悉tex格式（謎之聲：那你現在編寫的是什麼？），直到現在wiki我們終於可以有個好地方來說明一下各函式的內容與使用重點。
+
+這篇文章會先以語音類的為主。
+
+''STT（語音轉文字類別）''
+
+```
+STT.setProperty(chunk,rate,rec)
+```
+這個方法會設定麥克風（或陣列）的參數，chunk為緩衝大小，預設值1024；rate為聲音採樣率，預設值16000；rec為錄音秒數，預設值5（秒）。
+
+預設值為Respeaker V2的參數，因此若更換麥克風，需要變更這些參數。最常變更的是rate，通常會是44100、44000、22000、16000、8000這幾個。
+
+------
+
+```
+STT.recordWave()
+```
+這個方法會依照前面給出的參數進行錄音，錄音檔案儲存在同目錄底下的record.wav
+
+------
+
+```
+STT.stt()
+```
+這個方法會先呼叫recordWave()，開始錄音會顯示&quot;recording......&quot;。接著將錄音檔轉換為文字，回傳為字串。
+
+若聲音無法辨識（常見為太小聲、麥克風設定錯誤無錄音），則顯示&quot;Google Speech Recognition could not understand audio&quot;，無回傳（NULL）
+
+若網路出現問題，則顯示&quot;No response from Google Speech Recognition service: {0}&quot;，無回傳
+
+------
+
+''TTS（文字轉語音類別）''
+
+僅有一個方法：
+
+```
+TTS.wordToSound(text)
+```
+
+將指定的文字（text）以google小姐語音念出，無回傳
+
+使用時請確定音訊輸出裝置正確設定、網路狀況正常。
+
+另外可以在呼叫wordToSound之前，透過
+
+```
+TTS.LANGUAGE = &quot;語系代碼&quot;
+```
+
+變更說出來的語系（代碼可至google查詢）
+
+------
+
+''QA（問答類別）''
+
+有一個類別：
+
+```
+QA.wikiQA(sentence)
+```
+
+將指定的簡單問句（sentence）以wiki查詢結果回答，設定類別時必須同時將問句傳入：
+
+```python
+a = QA.wikiQA(&quot;XXX是誰&quot;)
+```
+
+再呼叫其中的
+
+```python
+a.result()
+```
+
+顯示回答句，同時回答句會回傳。</pre>
+</div>
+<div created="20190919053619547" creator="ckshadow" modified="20190919054750248" modifier="ckshadow" tags="Python學堂" title="playrobot函式庫介紹（機器人類）">
+<pre>暫時來看，僅有PiBB（Play AI）這個產品用這個函式庫控制
+
+''Servo（伺服馬達控制類）''
+
+```
+startServo(address)
+```
+
+這個方法為使用時最優先呼叫，設定playpython教學板的I^^2^^C地址
+
+可以透過命令列視窗輸入
+
+```
+i2cdetect -y 1
+```
+
+顯示哪個位置接了i^^2^^C裝置，一般而言，我們的教學板都會是 0 x 60 這個位置。
+
+------
+
+```
+setServoPulse(channel, pulse)
+```
+
+設定完板子位置之後，透過這個方法對板子下指令控制馬達訊號。
+
+channel有四個位置：0,1,14,15，請參考板子右側之PWM/Servo腳位。
+
+pulse值為正整數，以我們小車連接的馬達其區間為
+
+1300（倒轉）&lt;==1500（靜止）==&gt;1700（前轉）。</pre>
 </div>
 <div created="20190905063855790" creator="ckshadow" modified="20190905064202819" modifier="ckshadow" tags="Python學堂" title="python之「禪」">
 <pre>這次，我們來討論一下Python的設計哲學。
