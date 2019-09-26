@@ -491,8 +491,6 @@ Error message and password prompt
 
 <li>Arduino</li>
 
-<li>Draft of '示範賽' by ckshadow</li>
-
 <li>Draft of '新條目' by ckshadow</li>
 
 <li>Mega2560</li>
@@ -13742,7 +13740,7 @@ Error message and password prompt
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20190926023016893" creator="ckshadow" list="[[Draft of '示範賽' by ckshadow]] 關於我們" modified="20190926065819429" modifier="ckshadow" title="$:/StoryList">
+<div created="20190926070600326" creator="ckshadow" list="示範賽 關於我們" modified="20190926070600326" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -13764,19 +13762,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///D:/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%8D%80/wiki/wiki.html&quot;
+            &quot;text&quot;: &quot;https://playrobotwiki.github.io/&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;playrobotwiki.github.io&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;playrobotwiki.github.io&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
+            &quot;text&quot;: &quot;https:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -13784,7 +13782,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/D:/%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%8D%80/wiki/wiki.html&quot;
+            &quot;text&quot;: &quot;/&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -13792,7 +13790,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;file://&quot;
+            &quot;text&quot;: &quot;https://playrobotwiki.github.io&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -14817,7 +14815,7 @@ print([‘fizzbuzz’ if i%15==0 else ‘buzz’ if i%5 == 0 else ‘fizz’ if 
 
 對，一行（O）</pre>
 </div>
-<div created="20190925024231764" creator="ckshadow" modified="20190926070313710" modifier="ckshadow" tags="影像辨識競賽" title="示範賽">
+<div created="20190925024231764" creator="ckshadow" modified="20190926070634477" modifier="ckshadow" tags="影像辨識競賽" title="示範賽">
 <pre>影像辨識示範賽規則初稿，歡迎各界洽詢舉辦
 
 ----------------------------
@@ -14888,7 +14886,7 @@ print([‘fizzbuzz’ if i%15==0 else ‘buzz’ if i%5 == 0 else ‘fizz’ if 
 
 7.	在辨識區域中若有多報或誤報，該次區域辨識視為無效。
 
-@@color:#ff0000;8.	過程中允許選手遠端''監看''車子行進狀況以利研究或資料留存，但出賽（出場比賽）過程中若發現任何遠端更改或控制行為，視同喪失比賽資格。@@
+@@color:#ff0000;8.	過程中允許選手遠端''「監看」''車子行進狀況以利研究或資料留存，但出賽（出場比賽）過程中若發現任何遠端更改或控制行為，視同喪失比賽資格。@@
 
 9.	若超過5分鐘仍未完成辨識次數，則時間視為5分鐘，並記錄辨識成功次數作為成績。
 
@@ -15479,110 +15477,6 @@ AI界目前的認知，大多認為非監督式比較接近真實智慧，我們
 &lt;&lt;toc-selective-expandable 'Arduino'&gt;&gt;
 
 &lt;/div&gt;</pre>
-</div>
-<div created="20190925024231764" creator="ckshadow" draft.of="示範賽" draft.title="示範賽" modified="20190926070342082" modifier="ckshadow" tags="影像辨識競賽" title="Draft of '示範賽' by ckshadow">
-<pre>影像辨識示範賽規則初稿，歡迎各界洽詢舉辦
-
-----------------------------
-
-!!'' 一、機器人相關規定''
-
-    1.基於公平原則，須使用RBB Car AIoT智慧機器人系列套件(含控制器)，馬達部分限制使用Parallax標準型連續旋轉伺服馬達，輪胎部分須為原廠規格不得改造。
-
-    @@color:#ff0000;2.智慧機器人必須以自主前進，不得遙控。 @@
-
-    3.智慧機器人(含裝設感測器材料)之整體尺寸，最大限制為長：28cm，寬：16cm，高：16cm。
-
-    @@color:#ff0000;4.在符合安全以及長寬高限制狀況下，允許增/改裝感測器 @@
-
-    5.裝設物件不得破壞場地，破壞之隊伍需負修復責任
-
-    6.比賽開始後，選手不得變更程式
-
-    7.比賽開始後，除跑出賽道，經裁判指示需放回外，選手不得觸碰機器人
-
-    8.對於智慧機器人之規定，參賽者若有疑義，應於賽前主動提出釋疑。比賽當天，進行自走車檢錄時，以裁判認定為準。自走車若未能完成檢錄程序，即視同比賽棄權。
-
-!!'' 二、參賽規定''
-
-    1.報名組別：不分組別歡迎一起挑戰，若超過5隊，則依高中職與大專施以分組賽。
-
-    2.比賽當天依主辦單位公佈時間表進行報到、檢錄及比賽。
-
-    3.每隊最多四人及一台智慧機器人為限。
-
-    4.參賽隊伍在報到後請推派一名選手出賽並檢錄智慧機器人，檢查完畢後將智慧機器人置放於主辦單位指定區域，放置後將不得再做軟、硬體(含電池)之調整及更換。
-
-    5.其餘選手在競賽過程中不得進入競賽區。
- 
-
-!!'' 三、競賽場地''
-
-
-1.	競賽場地：如下圖，賽場為240x180cm黑色，道路部分佔120x90cm。白線寬度4cm，道路寬度為20cm。轉角須為圓弧或方形倒角，如下示範圖。
-
-[img[https://i.imgur.com/KOBeyJA.png]]
-
-2.	競賽圖片：路上標誌牌為6x6cm 之黑底白色的單純幾何@@color:#ff0000;凸形@@圖樣，四取二平置於跑道長端路面上。圖樣如下示範圖。（尺寸因網頁格式略有失真）
-            
-[img[https://i.imgur.com/OPDdSjy.png]]
-
-3.	實際競賽場地尺寸因組裝會有些微落差，仍以比賽當天之現況為準。
-
-4.	因採用組裝方式，故相鄰隔板會有些微傾斜與落差，行經時如有跳動現象，參賽者不得有任何異議。
-
-5.	場地測試時的環境狀況若與實際比賽的環境狀況不同時，如跑道色澤、標線標示色澤、環境燈光、跑道接縫…等，仍以比賽當時的環境狀況為準，參賽者不得有任何異議。
-
-6.	比賽場所的照明、溫度、濕度…等，均為普通的環境程度，選手不得要求調節照明、濕度、溫度…等。
-
-!!''四、競賽規則''
-
-1.	每隊只有一次出賽機會(或當天由裁判長決定次數)。
-
-2.	凡經唱名3次未到者，即視同比賽棄權。
-
-3.	經唱名後，選手向裁判抽取標誌牌2個後自行放置於跑道長邊各一，放置動作需於30秒內完成。放置標誌後，選手將智慧機器人攜帶至競賽指定起點，期間不得藉故再對智慧機器人所有組件進行調整、設定或置換(含程式、電池及電路等)，亦不得請求暫停。待裁判哨音後開始計時。
-
-4.	裁判哨音後，智慧機器人須於指定起點啟動。啟動後，智慧機器人需在簡單雙白線賽道上順時針行駛。若@@color:#ff0000;過程中車子離開跑道，則停止計時，經裁判指示後，選手可將車子放回離開跑道之位置。放置後+30秒，繼續比賽及計時。@@
-
-5.	當進入辨識有效區域後，機器人需語音念出該圖樣的名稱，若正確則計乙次
-
-6.	當辨識二位置物體皆達目標次數，停止計時，並將該時間做為成績
-
-7.	在辨識區域中若有多報或誤報，該次區域辨識視為無效。
-
-@@color:#ff0000;8.	過程中允許選手遠端''「監看」''車子行進狀況以利研究或資料留存，但出賽（出場比賽）過程中若發現任何遠端更改或控制行為，視同喪失比賽資格。@@
-
-9.	若超過5分鐘仍未完成辨識次數，則時間視為5分鐘，並記錄辨識成功次數作為成績。
-
-10.	主辦方可依參賽組數調整適當時間
-
-11.	若同次數者，以時間短者為勝；若次數時間皆相同，以跑的總圈數少者為勝。
-
-一個可能的賽況如下表：
-此賽況中，兩個位置皆需要辨識成功4次。依前述的排名規則，其前名次為E&gt;A&gt;D&gt;B&gt;C&gt;F
-
-EAD皆完賽，E時間短勝，A圈數少於D勝
-
-BCF皆未完賽，B辨識次數最多，C圈數少於F
-
-|組別|辨識成功次數|時間|圈數|
-|A|8|4：08|5|
-|B|7|5：00|10|
-|C|6|5：00|4|
-|D|8|4：08|6|
-|E|8|3：16|8|
-|F|6|5：00|7|
-
-12.	競賽過程中，參賽選手及自走車不得破壞比賽場地，若裁判發現有此項行為，得宣告該選手及自走車退場，並喪失比賽資格。
-
-!!''五、其他事項''
-
-!!''@@color:#ffaa00;本競賽並未限制任何手法，歡迎在安全的範圍內進行挑戰@@''
-
-''@@color:#ff0000;選手參賽程式碼不會以任何形式公布，但發生爭議時主辦方有權檢查之@@''
-
-wiki內容僅供參考，實際規章請以主辦方為準</pre>
 </div>
 <div modified="20190910004906388" modifier="ckshadow" title="Draft of '新條目' by ckshadow">
 <pre></pre>
