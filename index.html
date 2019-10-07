@@ -435,6 +435,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
+<li>二進制的浮點數，是個坑</li>
+
 <li>人工智慧可以解決問題......並不是</li>
 
 <li>示範賽</li>
@@ -13740,7 +13742,7 @@ Error message and password prompt
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20190926070600326" creator="ckshadow" list="示範賽 關於我們" modified="20190926070600326" modifier="ckshadow" title="$:/StoryList">
+<div created="20191007015336644" creator="ckshadow" list="二進制的浮點數，是個坑 Python學堂" modified="20191007071114223" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -14680,6 +14682,43 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
         }
     }
 }</pre>
+</div>
+<div created="20191007015802343" creator="ckshadow" modified="20191007072251826" modifier="ckshadow" tags="Python學堂" title="二進制的浮點數，是個坑">
+<pre>浮點數，俗稱小數
+
+大多用於精確計算上，型別名稱為float
+
+對於程式設計而言，算是變數類別中最重要的一種－－同時也是最坑的一種
+
+我們知道，電腦是以二進位的方式在儲存資料的，這代表小數這種型別註定沒辦法精確。事實上，即使是十進制小數也沒辦法精確，試著想像一下一個無窮循環小數1/3，$$0.\bar{3}$$。當你儲存空間有限的時候，不可能可以儲存長度為無限的東西，因此在精度的截斷之下，無窮循環小數會是我們第一個不精確的東西。
+
+那不是無限循環的狀況呢？
+
+遺憾的是，即使是我們自己給出的小數，也會因為儲存空間的精度以及二進制的關係損失：
+
+```python
+print(3.2-1.7)
+out : 1.5000000000000002
+```
+
+......WTF
+
+明顯的可以看到尾巴有奇怪的數字跑出來，原因就如同我們前段所述。而這種錯誤同樣的也會導致取近似函數round（2.5）變成3的結果（一般依照四捨六入這邊應該是2），由於最後的小小尾數，他遵從了5後面有其他位數直接進位的這規則。
+
+當然不只會多，也有可能會少，甚至有可能導致以下現象：
+
+```python
+0.3 + 0.3 + 0.3 == 0.9
+Out: False
+0.3 + 0.3 + 0.3
+Out: 0.899999999999
+```
+
+所以盡量不要挑戰用浮點數當成條件判斷的條件，浮點數往往會出乎你的預期，在你預想不到的地方坑你一把。
+
+但也不是說這樣子就沒救了，python中還有decimal這個物件可以協助你精確地處理小數。在大多數狀況下，它會比float還要精確一點，並且可以透過設定指定要保留的精確位數－－至少0.3+0.3+0.3會是0.9了。
+
+......但小數以下位數太多的時候還是會被二進制誤差吃掉就是了。</pre>
 </div>
 <div created="20190903063133262" creator="ckshadow" modified="20190905032216549" modifier="ckshadow" tags="Python學堂" title="人工智慧可以解決問題......並不是" type="">
 <pre>本文情境參考：http://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow/
