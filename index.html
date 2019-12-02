@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/state/plugin-info-334910430-$:/core---1812962263</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab--86143343</li>
@@ -451,6 +453,8 @@ Error message and password prompt
 
 <li>即時翻譯介面</li>
 
+<li>系統技巧</li>
+
 <li>亮度、壓力感測</li>
 
 <li>為何python中沒有switch/case？</li>
@@ -466,6 +470,8 @@ Error message and password prompt
 <li>評測與比較</li>
 
 <li>開發板</li>
+
+<li>開機自動執行python檔</li>
 
 <li>感測器</li>
 
@@ -13676,6 +13682,9 @@ Error message and password prompt
 <div created="20190902080835060" creator="ckshadow" modified="20190902080836364" modifier="ckshadow" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>readme</pre>
 </div>
+<div created="20191202005142994" creator="ckshadow" modified="20191202005142994" modifier="ckshadow" title="$:/state/showeditpreview">
+<pre>yes</pre>
+</div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
@@ -13739,10 +13748,10 @@ Error message and password prompt
 <div created="20190924010858158" creator="ckshadow" modified="20190924010858158" modifier="ckshadow" title="$:/state/toc/TableOfContents/競賽專區/IEEE競賽-賽制--118161433">
 <pre>open</pre>
 </div>
-<div created="20190902070644905" creator="ckshadow" modified="20190924005900277" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-開發板--118161433">
+<div created="20190902070644905" creator="ckshadow" modified="20191202004916506" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-開發板--118161433">
 <pre>close</pre>
 </div>
-<div created="20190902070715841" creator="ckshadow" modified="20190911070203335" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-感測器--118161433">
+<div created="20190902070715841" creator="ckshadow" modified="20191202004915979" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-感測器--118161433">
 <pre>close</pre>
 </div>
 <div created="20190902071207457" modified="20190902071207457" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-擴充板--118161433">
@@ -13751,7 +13760,7 @@ Error message and password prompt
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20191125015227944" creator="ckshadow" list="關於我們" modified="20191125015227944" modifier="ckshadow" title="$:/StoryList">
+<div created="20191202004911309" creator="ckshadow" list="開機自動執行python檔 關於我們" modified="20191202005011746" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15014,6 +15023,9 @@ wiki內容僅供參考，實際規章請以主辦方為準</pre>
 調整語系需使用人機介面右邊的下拉選單，支援8國語系（中英法德日意西韓）
 </pre>
 </div>
+<div created="20191202005018924" creator="ckshadow" modified="20191202005032235" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="系統技巧">
+<pre></pre>
+</div>
 <div created="20190902070657314" modified="20190902070702027" tags="感測器" title="亮度、壓力感測">
 <pre></pre>
 </div>
@@ -15159,6 +15171,56 @@ DEMO完整影片：
 &lt;&lt;toc-selective-expandable '開發板'&gt;&gt;
 
 &lt;/div&gt;</pre>
+</div>
+<div created="20191202005035444" creator="ckshadow" modified="20191202010649819" modifier="ckshadow" tags="系統技巧" title="開機自動執行python檔">
+<pre>本文參考https://ssk7833.github.io/blog/2018/12/10/raspberry-pi-autostart-lxterminal-and-run-python/ ，並實行修正而成
+
+我們希望能夠在開機後加掛我們的音箱GUI，但由於樹莓派的OS特性，更動rc.local的方案並不能達成我們的需求，因此找到了上文的方案。
+
+首先，我們打開home/pi，右鍵&gt;顯示隱藏的檔案，沿著這個路徑找到autostart這個檔案
+
+```python
+/home/pi/.config/lxsession/LXDE/
+```
+
+用文字編輯器打開autostart，備而不用
+
+接著找一個你中意的地方（比如說home/pi）裡面，新增並撰寫批次檔start.sh：
+
+```python
+#!/bin/bash &lt; 非必要
+
+cd python檔所在的路徑
+(sudo) python3 main.py
+```
+
+這邊是可以指定sudo權限的，端看使用者執行的需求。但自己要注意你的script用sudo執行會不會正常－－比方說比較舊版本的樹莓派，sudo會無法撥放聲音（ALSA系統異常）
+
+接著是最關鍵的動作，給批次檔執行權限。使用終端機cd到剛剛你中意的地方，並以指令更改批次檔的執行權限：
+
+```python
+chmod +x start.sh
+```
+
+更改完之後，請''直接''點兩下start.sh，看看有沒有跑出「此檔案為可執行的檔案」這個小通知視窗。
+
+並且建議直接執行看看是不是和預期相同，若出現問題，請cd到剛剛你中意的地方，並且使用
+
+```python
+sh start.sh
+```
+
+這個指令來檢查是不是有什麼預期外的錯誤
+
+確定執行OK，就把剛剛備而不用的autostart檔案中新增以下內容：
+
+```python
+lxterminal --command=&quot;剛剛你中意的地方/start.sh&quot;
+```
+
+請存檔（O
+
+接著就可以重新啟動，檢查一下自動執行是否正常了～</pre>
 </div>
 <div created="20190902070648339" creator="ckshadow" modified="20190903061110792" modifier="ckshadow" tags="Arduino" title="感測器">
 <pre>囊括各式感測器
