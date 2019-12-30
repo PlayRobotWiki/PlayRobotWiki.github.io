@@ -245,6 +245,10 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents/Arduino-感測器--118161433</li>
 
+<li>$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433</li>
+
+<li>$:/state/toc/TableOfContents/NVidia Jetson Nano-NV實戰測試--118161433</li>
+
 <li>$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-系統技巧--118161433</li>
 
 <li>$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-擴充板--118161433</li>
@@ -564,6 +568,8 @@ Error message and password prompt
 <li>Nano與他的電力供應</li>
 
 <li>Nano與他的環境建置</li>
+
+<li>NV實戰測試</li>
 
 <li>NVidia Jetson Nano</li>
 
@@ -14041,6 +14047,12 @@ very-muted-foreground: #888888</pre>
 <div created="20190902070715841" creator="ckshadow" modified="20191230034656744" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-感測器--118161433">
 <pre>close</pre>
 </div>
+<div created="20191230091559985" creator="ckshadow" modified="20191230091838649" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433">
+<pre>close</pre>
+</div>
+<div created="20191230091755650" creator="ckshadow" modified="20191230091755650" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-NV實戰測試--118161433">
+<pre>open</pre>
+</div>
 <div created="20191227014141907" creator="ckshadow" modified="20191230034703136" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-系統技巧--118161433">
 <pre>open</pre>
 </div>
@@ -14053,7 +14065,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20191230074124218" creator="ckshadow" list="關於我們" modified="20191230083618811" modifier="ckshadow" title="$:/StoryList">
+<div created="20191230091516651" creator="ckshadow" list="關於我們" modified="20191230091807338" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15752,7 +15764,7 @@ print(str([[0]*(i-3) + [1]*(2-(i-5)*2+1) + [0]*(i-3) if i&gt;3 else [0]*(2-i+1) 
 <div created="20190924010611610" creator="ckshadow" modified="20190925024149193" modifier="ckshadow" tags="競賽專區" title="影像辨識競賽">
 <pre></pre>
 </div>
-<div created="20191227014238485" creator="ckshadow" modified="20191230083522564" modifier="ckshadow" tags="DonkeyCar" title="標準PCA9685控制">
+<div created="20191227014238485" creator="ckshadow" modified="20191230091548002" modifier="ckshadow" tags="DonkeyCar" title="標準PCA9685控制">
 <pre>DonkeyCar的運作，是由manager中載入各種part，part間互相交換需要的參數運作的（類似於ROS的機制）。
 
 各part的原始碼可以參考https://github.com/autorope/donkeycar/blob/dev/donkeycar/parts/
@@ -16088,13 +16100,13 @@ AI界目前的認知，大多認為非監督式比較接近真實智慧，我們
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20191227014155974" creator="ckshadow" modified="20191227014236596" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="DonkeyCar">
+<div created="20191227014155974" creator="ckshadow" modified="20191230091557058" modifier="ckshadow" tags="[[NVidia Jetson Nano]] [[Raspberry Pi 3B+/4B]]" title="DonkeyCar">
 <pre></pre>
 </div>
 <div created="20190902070415283" modified="20190902070635122" tags="開發板" title="Mega2560">
 <pre>測試用子條目</pre>
 </div>
-<div created="20190905002626707" creator="ckshadow" modified="20190905003454465" modifier="ckshadow" tags="[[NVidia Jetson Nano]]" title="Nano與他的記憶體">
+<div created="20190905002626707" creator="ckshadow" modified="20191230091757970" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的記憶體">
 <pre>我們在[[NVidia Jetson Nano Vs RPi4B]]中提到過，
 Pi4的系統本身大約會吃掉700MB記憶體上下，因此殘量大約為3.3GB；而Nano如果安裝的是原版未更動的系統的話，系統大約吃掉2.2GB，殘量約為1.7GB。
 
@@ -16127,7 +16139,7 @@ sudo apt install lxde
 
 重新開機，應該可以明顯感受到跑得快了一點點？當然，使用free -h看的記憶體大概會多出整整1GB－－而這才是我們做了這趟工的重點。</pre>
 </div>
-<div created="20190905003602995" creator="ckshadow" modified="20190905062939988" modifier="ckshadow" tags="[[NVidia Jetson Nano]]" title="Nano與他的電力供應">
+<div created="20190905003602995" creator="ckshadow" modified="20191230091806314" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的電力供應">
 <pre>我們在[[NVidia Jetson Nano Vs RPi4B]]中有以下論述：
 
 ......（前略）一般的5V2A不能支撐GPU完全啟動的消耗，會快樂的直接跳機給你看。5V2A只是「能夠開機」的標準，如果只給這電量真的只能開機......（中略）
@@ -16150,7 +16162,7 @@ Nano有三種供電方式：USB、DC、GPIO。其中USB就是我們5A2V的葬身
 
 可惜那個方法有點麻煩，懶人如我還是使用DC就好。</pre>
 </div>
-<div created="20190905055958769" creator="ckshadow" modified="20190905062842677" modifier="ckshadow" tags="[[NVidia Jetson Nano]]" title="Nano與他的環境建置">
+<div created="20190905055958769" creator="ckshadow" modified="20191230091813457" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的環境建置">
 <pre>NVidia Jetson Nano是一塊「號稱」邊緣運算用嵌入式板，許多規格上來看，熟悉使用樹莓派的用戶也可以很快速的上手它。
 
 然而想像是美好的，現實總是會給你一點落差，我們這邊會一項一項，告訴大家Nano使用中可能會遇到的各種坑。
@@ -16211,7 +16223,10 @@ sudo nano /etc/fstab
 
 到這裡，我們勉強（？）大功告成，可以開始來一點恐怖的任務了。好消息是，Nano板上面的機器學習都不需要像神經棒或者Coral那樣轉檔案，電腦怎麼跑就怎麼跑～</pre>
 </div>
-<div created="20190905002541459" creator="ckshadow" modified="20190905002620929" modifier="ckshadow" tags="TableOfContents" title="NVidia Jetson Nano">
+<div created="20191230091623085" creator="ckshadow" modified="20191230091707962" modifier="ckshadow" tags="[[NVidia Jetson Nano]]" title="NV實戰測試">
+<pre></pre>
+</div>
+<div created="20190905002541459" creator="ckshadow" modified="20191230091620386" modifier="ckshadow" tags="TableOfContents" title="NVidia Jetson Nano">
 <pre>我知道這塊板很強，但他還能更強一點</pre>
 </div>
 <div created="20190902071251307" creator="ckshadow" modified="20190911074335914" modifier="ckshadow" tags="評測與比較" title="NVidia Jetson Nano Vs RPi4B">
