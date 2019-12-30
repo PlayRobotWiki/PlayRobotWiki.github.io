@@ -485,6 +485,8 @@ Error message and password prompt
 
 <li>示範賽</li>
 
+<li>安裝與建立</li>
+
 <li>自製產品</li>
 
 <li>即時控制介面</li>
@@ -14035,10 +14037,10 @@ very-muted-foreground: #888888</pre>
 <div created="20190902070715841" creator="ckshadow" modified="20191202004915979" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-感測器--118161433">
 <pre>close</pre>
 </div>
-<div created="20191227014141907" creator="ckshadow" modified="20191227014445856" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-系統技巧--118161433">
+<div created="20191227014141907" creator="ckshadow" modified="20191230033227833" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-系統技巧--118161433">
 <pre>close</pre>
 </div>
-<div created="20190902071207457" modified="20190902071207457" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-擴充板--118161433">
+<div created="20190902071207457" creator="ckshadow" modified="20191230033230121" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-擴充板--118161433">
 <pre>open</pre>
 </div>
 <div created="20191227014443368" creator="ckshadow" modified="20191227014443368" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-DonkeyCar--118161433">
@@ -14047,7 +14049,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20191227013748974" creator="ckshadow" list="DonkeyCar 連車都不是的機器人控制 關於我們" modified="20191227014232948" modifier="ckshadow" title="$:/StoryList">
+<div created="20191230033308072" creator="ckshadow" list="關於我們" modified="20191230033355762" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15314,6 +15316,43 @@ BCF皆未完賽，B辨識次數最多，C圈數少於F
 ''@@color:#ff0000;選手參賽程式碼不會以任何形式公布，但發生爭議時主辦方有權檢查之@@''
 
 wiki內容僅供參考，實際規章請以主辦方為準</pre>
+</div>
+<div created="20191230033327966" creator="ckshadow" modified="20191230034358296" modifier="ckshadow" tags="DonkeyCar" title="安裝與建立">
+<pre>Donkey Car本身安裝參考
+
+http://docs.donkeycar.com/
+
+如果是購買我們含映像檔的產品，那基本上依賴都已經安裝完成，只需要以下動作即可：
+
+因為需要的依賴都已經裝過了，所以依照以下步驟直接裝主體：
+
+```python
+git clone https://github.com/autorope/donkeycar 
+cd donkeycar 
+git checkout master 
+sudo pip3 install -e .[pi]
+```
+---
+
+那如果是乾淨的RPi映像檔則需要參照：
+
+http://docs.donkeycar.com/guide/install_software/
+
+---
+
+上述二選一安裝好之後輸入：
+
+```
+donkey createcar
+```
+
+我們就可以在home/pi底下找到mycar這個資料夾，此資料夾可以搬移、複製。
+
+裡面有幾個檔案，功能如下：
+
+[img[https://i.imgur.com/d2HhpKp.png]]
+
+確認到有這些檔案之後，恭喜基礎安裝已經完成了，可以依照硬體平台進行下一步驟。</pre>
 </div>
 <div created="20190905032054396" creator="ckshadow" modified="20190905032109739" modifier="ckshadow" tags="TableOfContents" title="自製產品">
 <pre></pre>
