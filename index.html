@@ -9823,7 +9823,8 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;示範賽圖樣：\r\n\r\n[img[https://i.imgur.com/OPDdSjy.png]]\r\n\r\n正式賽（預定）圖樣：\r\n&quot;
+            &quot;text&quot;: &quot;&lt;html&gt;\r\n&lt;body&gt;\r\n&lt;!--StartFragment--&gt;&lt;pre style=\&quot;box-sizing: border-box; overflow: auto; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 16px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(249, 249, 249); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;code style=\&quot;box-sizing: border-box; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;\&quot;&gt;playrobotAICar&lt;/code&gt;&lt;/pre&gt;&lt;!--EndFragment--&gt;\r\n&lt;/body&gt;\r\n&lt;/html&gt;&quot;,
+            &quot;type&quot;: &quot;text/html&quot;
         }
     }
 }</pre>
@@ -14067,7 +14068,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20191231063718707" creator="ckshadow" list="" modified="20191231071003306" modifier="ckshadow" title="$:/StoryList">
+<div created="20200102023455792" creator="ckshadow" list="非標準自走車控制 關於我們" modified="20200102025642006" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15394,8 +15395,63 @@ donkey createcar
 <div created="20191202005018924" creator="ckshadow" modified="20191227014153502" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="系統技巧">
 <pre></pre>
 </div>
-<div created="20191227014451860" creator="ckshadow" modified="20191227014501914" modifier="ckshadow" tags="DonkeyCar" title="非標準自走車控制">
-<pre></pre>
+<div created="20191227014451860" creator="ckshadow" modified="20200102040431928" modifier="ckshadow" tags="DonkeyCar" title="非標準自走車控制">
+<pre>我們上一節在[[標準PCA9685控制]]中討論了怎麼把DonkeyCar架上由PCA9685作為主控制器的車，現在我們來討論一下不是PCA9685的狀況
+
+本文適用於[[智慧機器人]]
+
+基本的myconfig變更和[[標準PCA9685控制]]中一模一樣，此處不再贅述，關鍵就在中間更改manage.py的時候了。
+
+我們一樣找到cfg.DRIVE_TRAIN_TYPE，並在最後一個cfg.DRIVE_TRAIN_TYPE == '？'後面添加一個新的cfg.DRIVE_TRAIN_TYPE判斷：
+
+```
+elif cfg.DRIVE_TRAIN_TYPE == &quot;PlayRobot&quot;:
+    import playrobotAICar
+    controller = playrobotAICar.Arduino()
+    V.add(controller, inputs = ['throttle','angle']
+```
+
+......阿咧？怎麼這麼短？
+
+還記得我們之前說過，V.add定義物件和他接收的參數，也提到過控制就是由throttle和angle兩個參數決定的。因為我們是自己定義的控制方式，所以不用用他任何轉換的物件或方法，直接拉進我們自己的函式庫處理。
+
+至於拉進來之後要做什麼呢，我們有個小小的範例，請在manage目錄中新增playrobotAICar.py：
+
+```python
+class Arduino():
+    def __init__(self):
+        import serial
+        self.motor = serial.Serial('/dev/ttyACM0',115200,timeout=1)
+        self.lastCmd = 'off'
+        self.speed = 0
+    
+    def set_pulse(self, pulse):
+        self.motor.flush()
+        s = ''
+        if pulse &gt; .3 :s = '2'
+        elif pulse &lt; -.3 :s = '3'
+        else : s = '1'
+        nowCmd = str(s) + '_' + str(self.speed) + '\n'
+        if nowCmd != self.lastCmd:
+            self.motor.write(nowCmd.encode())
+            self.lastCmd = nowCmd
+        self.motor.flush()
+
+    def run(self, pulse , speed):
+        self.speed = speed * 200
+        self.set_pulse(pulse)
+    
+    def shutdown(self):
+        self.motor.write('8_50'.encode())
+
+```
+
+這邊簡單的定義了收到前面提到的那兩個參數之後要做什麼事情，注意run這個方法必備，少了絕對噴錯誤給你看。如果使用PWM轉換成一個區間值的方法，則set_pulse也必備。而run收的參數和前面V.add時的inputs數量需相同。
+
+由於原始拉進來的throttle和angle都是-1~1之間的數值，因此控制也因應這個區間去變化。angle主要拿來控制左右，而throttle定義速度（前後）
+
+注意這邊Arduino的程式是接收（控制方向）_（速度），1前進2左轉3右轉4後退，Arduino的程式這邊就不教學了－－智慧機器人內建的控制程式就是這個，不是的請自己去寫= =
+</pre>
 </div>
 <div created="20190902070657314" modified="20190902070702027" tags="感測器" title="亮度、壓力感測">
 <pre></pre>
