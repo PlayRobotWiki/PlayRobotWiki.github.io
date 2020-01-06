@@ -14082,7 +14082,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200106010527440" creator="ckshadow" list="關於我們" modified="20200106011134112" modifier="ckshadow" title="$:/StoryList">
+<div created="20200106055104375" creator="ckshadow" list="Microbit修復方法 關於我們" modified="20200106055104375" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -16240,8 +16240,26 @@ AI界目前的認知，大多認為非監督式比較接近真實智慧，我們
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20200106010558636" creator="ckshadow" modified="20200106010607988" modifier="ckshadow" tags="Microbit" title="Microbit修復方法">
-<pre></pre>
+<div created="20200106010558636" creator="ckshadow" modified="20200106055618407" modifier="ckshadow" tags="Microbit" title="Microbit修復方法">
+<pre>在一般情況下，Micorbit與電腦連接後會出現MICROBIT的硬碟，表示可以正常燒錄程式(.hex)，MICROBIT硬碟內始終只有DETAILS.TXT和MICROBIT.HTM兩個文件。
+
+[img[https://i.imgur.com/u39uoIw.png]]
+
+----------------------
+
+一旦硬碟變為了MAINTENANCE，表示microbit進入了維護模式：
+
+[img[https://i.imgur.com/1h6OrXi.png]]
+
+
+有以下兩種原因
+
+1.在插上USB的同時按下了Rest按鍵自主進入到了維護模式（重新插拔後可恢復）。
+
+2.在使用microbit的插拔過程中檔案遺失（無法自動回到正常狀態）。
+
+在檔案遺失的這種情況下，我們只需要重新燒入檔案「還原檔案0253_kl26z_microbit_0x8000.hex」即可恢復。
+</pre>
 </div>
 <div created="20190905002626707" creator="ckshadow" modified="20191230091757970" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的記憶體">
 <pre>我們在[[NVidia Jetson Nano Vs RPi4B]]中提到過，
