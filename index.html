@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/state/image-picker/system--1676176258</li>
 
+<li>$:/state/Link/-248668380/search</li>
+
 <li>$:/state/peek-stylesheets/open/--994748944$:/themes/tiddlywiki/vanilla/base</li>
 
 <li>$:/state/plugin-info--896887961-$:/plugins/tiddlywiki/codemirror-mode-markdown</li>
@@ -250,6 +252,8 @@ Error message and password prompt
 <li>$:/state/toc/TableOfContents/Arduino-開發板--118161433</li>
 
 <li>$:/state/toc/TableOfContents/Arduino-感測器--118161433</li>
+
+<li>$:/state/toc/TableOfContents/Arduino/感測器-溫溼度感測--118161433</li>
 
 <li>$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433</li>
 
@@ -500,6 +504,8 @@ Error message and password prompt
 <li>安裝與建立</li>
 
 <li>自製產品</li>
+
+<li>自製體溫偵測器－－從體溫監測防治肺炎</li>
 
 <li>即時控制介面</li>
 
@@ -13962,6 +13968,9 @@ very-muted-foreground: #888888</pre>
 <div created="20190903034623634" creator="ckshadow" modified="20190903034625433" modifier="ckshadow" title="$:/state/image-picker/system--1676176258">
 <pre>hide</pre>
 </div>
+<div created="20200219092435557" creator="ckshadow" modified="20200219092442199" modifier="ckshadow" title="$:/state/Link/-248668380/search">
+<pre></pre>
+</div>
 <div created="20191218063146127" creator="ckshadow" modified="20191218063147503" modifier="ckshadow" title="$:/state/peek-stylesheets/open/--994748944$:/themes/tiddlywiki/vanilla/base">
 <pre>no</pre>
 </div>
@@ -13983,7 +13992,7 @@ very-muted-foreground: #888888</pre>
 <div created="20191218063234807" creator="ckshadow" modified="20191218063234807" modifier="ckshadow" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20191218065643348" creator="ckshadow" modified="20191230083524835" modifier="ckshadow" title="$:/state/sidebar">
+<div created="20191218065643348" creator="ckshadow" modified="20200219092359782" modifier="ckshadow" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/state/tab--1498284803">
@@ -14067,11 +14076,14 @@ very-muted-foreground: #888888</pre>
 <div created="20190924010858158" creator="ckshadow" modified="20190924010858158" modifier="ckshadow" title="$:/state/toc/TableOfContents/競賽專區/IEEE競賽-賽制--118161433">
 <pre>open</pre>
 </div>
-<div created="20190902070644905" creator="ckshadow" modified="20191230034655288" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-開發板--118161433">
-<pre>close</pre>
+<div created="20190902070644905" creator="ckshadow" modified="20200219091833760" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-開發板--118161433">
+<pre>open</pre>
 </div>
-<div created="20190902070715841" creator="ckshadow" modified="20191230034656744" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-感測器--118161433">
-<pre>close</pre>
+<div created="20190902070715841" creator="ckshadow" modified="20200219091834856" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino-感測器--118161433">
+<pre>open</pre>
+</div>
+<div created="20200219092346190" creator="ckshadow" modified="20200219092346190" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino/感測器-溫溼度感測--118161433">
+<pre>open</pre>
 </div>
 <div created="20191230091559985" creator="ckshadow" modified="20191230091838649" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433">
 <pre>close</pre>
@@ -14091,7 +14103,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200204063255208" creator="ckshadow" list="官網超商取貨付款_下單流程 關於我們" modified="20200204064834830" modifier="ckshadow" title="$:/StoryList">
+<div created="20200219091838920" creator="ckshadow" list="溫溼度感測 自製體溫偵測器－－從體溫監測防治肺炎 關於我們" modified="20200219091838920" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15403,6 +15415,43 @@ donkey createcar
 &lt;&lt;toc-selective-expandable '自製產品'&gt;&gt;
 
 &lt;/div&gt;</pre>
+</div>
+<div created="20200219091841540" creator="ckshadow" modified="20200219092653968" modifier="ckshadow" tags="溫溼度感測" title="自製體溫偵測器－－從體溫監測防治肺炎">
+<pre>武漢肺炎短短幾周的傳染程度已經讓世界各國很多醫療器材都嚴重不足，身為一個防疫(?)，是有才能的工程師當然要在這物資缺乏的時候提供一個簡單且容易操作的小模組，讓大家能夠自製一個體溫感測器。
+
+首先，測量體溫的位置跟方式有很多種，正常體溫一般值在：
+        口探（舌下）：36.8±0.4℃（98.2±0.72°F）
+        體內（直腸）：37.0°C（98.6°F）
+身體的不同部位有不同的溫度，直接測量體腔內部的直腸的結果通常比口探測量稍高。還有其他地方，如在手臂或耳後會產生不同的正常溫度。
+
+體溫感測器主要原理是透過紅外線模組內的元件吸收體表反射的熱輻射反應
+，所以這次我們用到的模組MLX90615的非接觸式溫度測量模組就是基於以上原理，加上Arduino容易上手的程式碼與豐富的函式庫來製作。
+
+[img[https://i.imgur.com/QdSlcdz.png]]
+
+因為這組模組有做好接線槽，所以我們用ArduinoMega2560+擴充板直接接上MCU90615 紅外非接觸溫度計使用，如果是網路上測溫模組或零件，也可以參考我們下方說明欄提供的接腳去接線。
+
+[img[https://i.imgur.com/8oEmmHD.png]]
+
+線路都完成後，我們可以開啟Arduino IDE，準備輸入程式，歡迎各位參考這些模組，我們都有提供程式可以使用 &lt;a href=&quot;https://www.playrobot.com/temperature-humidity/1629-mcu90615-mlx90615.html?search_query=MLX90615&amp;results=3&quot;&gt;【MCU90615 紅外非接觸溫度計】&lt;/a&gt;
+
+[img[https://i.imgur.com/M6jSd5y.png]]
+
+執行步驟與結果：
+步驟1： 開啟Arduino，選擇正確的序列埠和開發板(ArduinoMega2560) 
+步驟2：將需要的Digital _Infrared_Temperature_Sensor _MLX90615-master放置在Arduino Library資料夾中(詳細過程生醫套件完整教程有教Arduino Library匯入方法)
+步驟3：撰寫程式並燒入
+步驟4：當程式燒錄完成後便可以開啟Arduino IDE的 工具-&gt;序列埠監控視窗 查看感測器讀數。 當程式燒錄完成後便可以開啟Arduino IDE的 工具-&gt;序列繪圖家，查看波形
+
+[img[https://i.imgur.com/wullWAk.png]]
+
+以上我們已經操作完這次的流程，是不是很簡單呢?
+如果想要有更多的效果或是展示方式，比如加入告警燈或是LCD顯示裝置，這也是一種專題呈現呢!!!
+
+[img[https://i.imgur.com/J1jFzPU.png]]
+
+這些課程，在 &lt;a href=&quot;https://www.playrobot.com/cloud-e-health/1808-mysignals-hw-ble-ehealth-medical-development-platform-arduino.html?search_query=%E7%94%9F%E9%86%AB&amp;results=14&quot;&gt;飆機器人的生醫套件&lt;/a&gt;
+中都有完整的課程，除了體溫感測、心律與血氧偵測、運動姿態感測多種生命徵象檢測應有盡有，每個章節都有模組使用目的、原理介紹、接線方式、程式碼編程、呈現效果到舉一反三情境應用，都完整提供，精彩的內容讓學習效果可以隨時檢驗，專題呈現多樣，教學績效滿滿。</pre>
 </div>
 <div created="20190905032311812" creator="ckshadow" modified="20190906010201507" modifier="ckshadow" tags="智慧機器人" title="即時控制介面">
 <pre>[img[https://i.imgur.com/QrcNNw1.png]]
