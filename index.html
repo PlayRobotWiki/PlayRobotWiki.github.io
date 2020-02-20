@@ -261,6 +261,8 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-系統技巧--118161433</li>
 
+<li>$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-機器人作業系統（ROS）--118161433</li>
+
 <li>$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-擴充板--118161433</li>
 
 <li>$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-DonkeyCar--118161433</li>
@@ -553,6 +555,8 @@ Error message and password prompt
 
 <li>樹莓派系統建置</li>
 
+<li>機器人作業系統（ROS）</li>
+
 <li>歷史軌跡</li>
 
 <li>辨識圖樣與跑道尺寸</li>
@@ -591,6 +595,8 @@ Error message and password prompt
 
 <li>Nano與他的環境建置</li>
 
+<li>Node</li>
+
 <li>NV實戰測試</li>
 
 <li>NVidia Jetson Nano</li>
@@ -614,6 +620,8 @@ Error message and password prompt
 <li>Respeaker Core V2</li>
 
 <li>Respeaker mic array v2</li>
+
+<li>ROS基本介紹</li>
 
 <li>TableOfContents</li>
 
@@ -14094,6 +14102,9 @@ very-muted-foreground: #888888</pre>
 <div created="20191227014141907" creator="ckshadow" modified="20191230034703136" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-系統技巧--118161433">
 <pre>open</pre>
 </div>
+<div created="20200220080920049" creator="ckshadow" modified="20200220080920049" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-機器人作業系統（ROS）--118161433">
+<pre>open</pre>
+</div>
 <div created="20190902071207457" creator="ckshadow" modified="20191230033230121" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-擴充板--118161433">
 <pre>open</pre>
 </div>
@@ -14103,7 +14114,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200220015314948" creator="ckshadow" list="自製體溫偵測器－－從體溫監測防治肺炎 關於我們" modified="20200220015314948" modifier="ckshadow" title="$:/StoryList">
+<div created="20200220075915339" creator="ckshadow" list="關於我們" modified="20200220080515337" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -16147,6 +16158,9 @@ Q4.可以裝ROS嗎？
 
 A4.樹莓派的raspbian不能直接裝ROS，手續複雜且不穩定，建議直接改裝ubuntu</pre>
 </div>
+<div created="20200220080519685" creator="ckshadow" modified="20200220080542755" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="機器人作業系統（ROS）">
+<pre></pre>
+</div>
 <div created="20191125004817841" creator="ckshadow" modified="20200106010857408" modifier="ckshadow" tags="競賽專區" title="歷史軌跡">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 
@@ -16520,6 +16534,25 @@ sudo nano /etc/fstab
 ```
 
 到這裡，我們勉強（？）大功告成，可以開始來一點恐怖的任務了。好消息是，Nano板上面的機器學習都不需要像神經棒或者Coral那樣轉檔案，電腦怎麼跑就怎麼跑～</pre>
+</div>
+<div created="20200220080714573" creator="ckshadow" modified="20200220080832370" modifier="ckshadow" tags="機器人作業系統（ROS）" title="Node">
+<pre>Node是ROS系統內最小的一個單位，位在Package底下，通常一個Node代表一個可以執行的程式。
+一個Package可以有很多個Node，用來執行不同的任務，例如一個人物偵測模組，可能內部就要有獲取圖片、影像處理、特徵點偵測的程式等等。
+每個Node都可以跟別的Node透過Topic、Service或其他方式來溝通、獲取資料。
+
+Node還有一個很大的特點就是他可以使用不同的語言來撰寫。
+以人物偵測為例，獲取圖片及影像處理的部分可以用Python來寫。
+特徵點偵測比較注重效能，就可以改用C++來寫，這些不同的Node都可以放在同一個Package裡面，形成一個人物偵測的模組。
+
+總結一下Node的特性：
+
+1.最小的執行單位。
+
+2.可以使用各種語言。
+
+3.因為獨立執行，單節點崩潰不會影響全部。
+
+4.節點間可以互相通訊。</pre>
 </div>
 <div created="20191230091623085" creator="ckshadow" modified="20200106011034729" modifier="ckshadow" tags="[[NVidia Jetson Nano]]" title="NV實戰測試">
 <pre>NV的各種坑，跟填坑的方法
@@ -17194,6 +17227,21 @@ pixel_ring.trace()
 開啟DOA模式，注意這個函式實測時他會變更wakeup的角度，不推薦直接使用。
 
 *注意：有關V2的函式必須以sudo權限執行</pre>
+</div>
+<div created="20200220080544885" creator="ckshadow" modified="20200220080910506" modifier="ckshadow" tags="機器人作業系統（ROS）" title="ROS基本介紹">
+<pre>ROS（機器人作業系統，Robot Operating System），是專為機器人軟體開發所設計出來的一套電腦作業系統架構。
+提供類似於作業系統的服務，包括硬體抽象描述、底層驅動程序管理、共用功能的執行、程序間消息傳遞、程序發行包管理，它也提供一些工具和庫用於獲取、建立、編寫和執行多機融合的程序。
+
+ROS的運行架構是一種使用ROS通信模塊實現模塊間P2P鬆耦合的網絡連接架構。
+翻成白話就是：ROS的node間通訊類似P2P形式
+通訊包括：
+基於服務的同步RPC（遠程過程調用）通訊，也就是類似網頁的服務。
+基於Topic的異步數據流通訊，還有參數伺服器上的數據存儲，類似於MQTT的形式。
+
+ROS主要是分布式處理框架（在ROS中又名Nodes）。這使可執行文件能被單獨設計，並且在運行時鬆散耦合。
+這些過程可以封裝到數據包（Packages）和堆疊（Stacks）中，以便於共享和分發。
+
+ROS現在可以直接安裝於Ubuntu系統上，可透過編譯的方式安裝於Raspberry上。</pre>
 </div>
 <div caption="目錄" created="20190902070118483" creator="ckshadow" list-after="$:/core/ui/SideBar/Open" modified="20200106010732898" modifier="ckshadow" tags="$:/tags/SideBar" title="TableOfContents">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
