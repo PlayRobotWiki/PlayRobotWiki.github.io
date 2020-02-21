@@ -14114,7 +14114,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200220075915339" creator="ckshadow" list="關於我們" modified="20200220080515337" modifier="ckshadow" title="$:/StoryList">
+<div created="20200221010405532" creator="ckshadow" list="自製體溫偵測器－－從體溫監測防治肺炎 關於我們" modified="20200221010405532" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15427,42 +15427,23 @@ donkey createcar
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20200219091841540" creator="ckshadow" modified="20200220020115740" modifier="ckshadow" tags="溫溼度感測" title="自製體溫偵測器－－從體溫監測防治肺炎">
+<div created="20200219091841540" creator="ckshadow" modified="20200221010954140" modifier="ckshadow" tags="溫溼度感測" title="自製體溫偵測器－－從體溫監測防治肺炎">
 <pre>武漢肺炎短短幾周的傳染程度已經讓世界各國很多醫療器材都嚴重不足，身為一個防疫(?)，是有才能的工程師當然要在這物資缺乏的時候提供一個簡單且容易操作的小模組，讓大家能夠自製一個體溫感測器。
 
-首先，測量體溫的位置跟方式有很多種，正常體溫一般值在：
-        口探（舌下）：36.8±0.4℃（98.2±0.72°F）
-        體內（直腸）：37.0°C（98.6°F）
-身體的不同部位有不同的溫度，直接測量體腔內部的直腸的結果通常比口探測量稍高。還有其他地方，如在手臂或耳後會產生不同的正常溫度。
+在 &lt;a href=&quot;https://www.playrobot.com/playrobot-education-kit/2401-e-health-sensor-platform-complete-kit.html&quot;&gt;飆機器人的生醫套件&lt;/a&gt;
+中就有這麼一個小章節，讓我們來看看吧！
 
-體溫感測器主要原理是透過紅外線模組內的元件吸收體表反射的熱輻射反應
-，所以這次我們用到的模組MLX90615的非接觸式溫度測量模組就是基於以上原理，加上Arduino容易上手的程式碼與豐富的函式庫來製作。
+[img[https://i.imgur.com/wzWlrAm.png]]
 
-[img[https://i.imgur.com/QdSlcdz.png]]
+[img[https://i.imgur.com/UEfjAtA.png]]
 
-因為這組模組有做好接線槽，所以我們用ArduinoMega2560+擴充板直接接上MCU90615 紅外非接觸溫度計使用，如果是網路上測溫模組或零件，也可以參考我們下方說明欄提供的接腳去接線。
+[img[https://i.imgur.com/pYOROUo.png]]
 
-[img[https://i.imgur.com/8oEmmHD.png]]
+[img[https://i.imgur.com/icSsMUO.png]]
 
-線路都完成後，我們可以開啟Arduino IDE，準備輸入程式，歡迎各位參考這些模組，我們都有提供程式可以使用 &lt;a href=&quot;https://www.playrobot.com/temperature-humidity/1629-mcu90615-mlx90615.html?search_query=MLX90615&amp;results=3&quot;&gt;【MCU90615 紅外非接觸溫度計】&lt;/a&gt;
+[img[https://i.imgur.com/u8yAi6m.png]]
 
-[img[https://i.imgur.com/M6jSd5y.png]]
-
-執行步驟與結果：
-步驟1： 開啟Arduino，選擇正確的序列埠和開發板(ArduinoMega2560) 
-步驟2：將需要的Digital _Infrared_Temperature_Sensor _MLX90615-master放置在Arduino Library資料夾中(詳細過程生醫套件完整教程有教Arduino Library匯入方法)
-步驟3：撰寫程式並燒入
-步驟4：當程式燒錄完成後便可以開啟Arduino IDE的 工具-&gt;序列埠監控視窗 查看感測器讀數。 當程式燒錄完成後便可以開啟Arduino IDE的 工具-&gt;序列繪圖家，查看波形
-
-[img[https://i.imgur.com/wullWAk.png]]
-
-以上我們已經操作完這次的流程，是不是很簡單呢?
-如果想要有更多的效果或是展示方式，比如加入告警燈或是LCD顯示裝置，這也是一種專題呈現呢!!!
-
-[img[https://i.imgur.com/J1jFzPU.png]]
-
-這些課程，在 &lt;a href=&quot;https://www.playrobot.com/playrobot-education-kit/2401-e-health-sensor-platform-complete-kit.html&quot;&gt;飆機器人的生醫套件&lt;/a&gt;
-中都有完整的課程，除了體溫感測、心律與血氧偵測、運動姿態感測多種生命徵象檢測應有盡有，每個章節都有模組使用目的、原理介紹、接線方式、程式碼編程、呈現效果到舉一反三情境應用，都完整提供，精彩的內容讓學習效果可以隨時檢驗，專題呈現多樣，教學績效滿滿。
+在這份教材中，除了體溫感測，心律與血氧偵測、運動姿態感測多種生命徵象檢測應有盡有，每個章節都有模組使用目的、原理介紹、接線方式、程式碼編程、呈現效果到舉一反三情境應用，都完整提供，精彩的內容讓學習效果可以隨時檢驗，專題呈現多樣，教學績效滿滿。
 
 &lt;iframe src=&quot;https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FPlayRobotCompany%2Fposts%2F2656479211133163&amp;width=500&quot; width=&quot;500&quot; height=&quot;537&quot; style=&quot;border:none;overflow:hidden&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; allowTransparency=&quot;true&quot; allow=&quot;encrypted-media&quot;&gt;&lt;/iframe&gt;
 
