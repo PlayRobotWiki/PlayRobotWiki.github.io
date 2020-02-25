@@ -537,6 +537,8 @@ Error message and password prompt
 
 <li>智慧機器人</li>
 
+<li>發佈與訂閱（上）</li>
+
 <li>評測與比較</li>
 
 <li>開發板</li>
@@ -580,6 +582,8 @@ Error message and password prompt
 <li>Arduino</li>
 
 <li>ckshadow</li>
+
+<li>Core</li>
 
 <li>DonkeyCar</li>
 
@@ -14114,7 +14118,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div list="自製體溫偵測器－－從體溫監測防治肺炎" title="$:/StoryList">
+<div created="20200225024616125" creator="ckshadow" list="關於我們" modified="20200225032436447" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15774,6 +15778,39 @@ DEMO完整影片：
 
 &lt;/div&gt;</pre>
 </div>
+<div created="20200225032438577" creator="ckshadow" modified="20200225033555480" modifier="ckshadow" tags="機器人作業系統（ROS）" title="發佈與訂閱（上）">
+<pre>前面（[[Core]]）提到過，ROS的系統架構是類似於RTPS網路結構－－其為 Real-Time Publisher-Subscriber Protocol的縮寫。從名字來看，這個網路結構的通訊是由發佈以及訂閱構成。而實際上也確實是如此－－ROS節點間最常用的通訊方式就是發佈與訂閱了。
+
+我們來看一個簡單的推送範例：
+
+```python
+#!/usr/bin/env python3
+import rospy 
+from std_msgs.msg import String
+ 
+def talker():
+    #指定他是推送訊息的節點
+    pub = rospy.Publisher('test', String, queue_size=10)
+    rospy.init_node('pubTest', anonymous=True) 
+    rate = rospy.Rate(1) 
+     
+    while not rospy.is_shutdown(): 
+        hello_str = &quot;hello world %s&quot; % rospy.get_time() 
+        rospy.loginfo(hello_str) 
+        #跟MQTT很像的發送法
+        pub.publish(hello_str) 
+        rate.sleep() 
+
+if __name__ == '__main__': 
+    talker() 
+```
+
+這個範例中，我們持續對test這個頻道發送hello world + 時間訊息。
+
+執行roscore+這個節點後，可以使用rostopic去查看是否新增了一個test頻道，並用rostopic的echo指令去監聽頻道，確認發送狀況。
+
+下一次，我們會來介紹怎麼用python接收頻道訊息。</pre>
+</div>
 <div created="20190903060123983" creator="ckshadow" modified="20200106010824432" modifier="ckshadow" tags="TableOfContents" title="評測與比較">
 <pre>主要發佈一些測試、性能報告
 
@@ -16362,6 +16399,21 @@ AI界目前的認知，大多認為非監督式比較接近真實智慧，我們
 比如說3D建模、動畫，製造梗圖、用程式畫圖、寫遊戲、玩遊戲、寫分析玩的遊戲的遊戲等等。
 
 然而專長是人工智慧領域的自然語言分析和資料探勘（跟上面提到的到底有什麼關係......）</pre>
+</div>
+<div created="20200225031431841" creator="ckshadow" modified="20200225032425343" modifier="ckshadow" tags="機器人作業系統（ROS）" title="Core">
+<pre>ROS系統的特色之一，就是不管你要跑什麼，都需要使用一個命令列視窗去執行roscore這個指令。事實上，當我們安裝完ROS之後第一件做的檢查也是確認這個core有正常運作。
+
+ros本身可以視作一種網路結構（RTPS），每一個節點就是一個IP－－而core則扮演著管理訊息、註冊節點的角色。透過roscore，我們可以方便的訪問網路內的其他節點，並傳遞訊息。
+
+也因此，所有ROS類節點執行前都必須要在core執行之後才能進行，否則無法註冊要怎麼加入網路中呢？
+
+而core的另外一個功能是保存那些整個網路都必須使用的變數，而這個就留待日後討論參數的時候再說明了。
+
+小結：
+
+&lt;b&gt;不論發生什麼事情&lt;/b&gt;
+
+ROS節點必須在掛載好core之後執行。</pre>
 </div>
 <div created="20191227014155974" creator="ckshadow" modified="20200106011008640" modifier="ckshadow" tags="[[NVidia Jetson Nano]] [[Raspberry Pi 3B+/4B]]" title="DonkeyCar">
 <pre>NV和樹莓派皆可使用的&quot;開源&quot;專案
