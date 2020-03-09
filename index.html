@@ -493,7 +493,23 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/stickytitles</li>
 
+<li>1.Nano與他的電力供應</li>
+
+<li>2.Nano與他的記憶體</li>
+
 <li>20191123_台北城市科大熱身賽</li>
+
+<li>3.Nano與他的環境建置</li>
+
+<li>4.Nano與他的開機設定</li>
+
+<li>5.Nano與他的終端機</li>
+
+<li>6.Nano與他的Python</li>
+
+<li>7.Nano與他的GPIO_LED</li>
+
+<li>8.Nano與他的GPIO_按鈕開關</li>
 
 <li>七吋觸控螢幕組裝與設定</li>
 
@@ -592,22 +608,6 @@ Error message and password prompt
 <li>Microbit</li>
 
 <li>Microbit修復方法</li>
-
-<li>Nano與他的記憶體</li>
-
-<li>Nano與他的終端機</li>
-
-<li>Nano與他的開機設定</li>
-
-<li>Nano與他的電力供應</li>
-
-<li>Nano與他的環境建置</li>
-
-<li>Nano與他的GPIO_按鈕開關</li>
-
-<li>Nano與他的GPIO_LED</li>
-
-<li>Nano與他的Python</li>
 
 <li>Node</li>
 
@@ -14128,7 +14128,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200303065844859" creator="ckshadow" list="NV實戰測試 Nano與他的GPIO_LED 關於我們" modified="20200303065844859" modifier="ckshadow" title="$:/StoryList">
+<div created="20200309013253354" creator="ckshadow" list="" modified="20200309013359577" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15093,6 +15093,62 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20191218072632626" creator="ckshadow" modified="20191218072633762" modifier="ckshadow" title="$:/themes/tiddlywiki/vanilla/options/stickytitles">
 <pre>no</pre>
 </div>
+<div created="20190905003602995" creator="ckshadow" modified="20200309013307338" modifier="ckshadow" tags="NV實戰測試" title="1.Nano與他的電力供應">
+<pre>我們在[[NVidia Jetson Nano Vs RPi4B]]中有以下論述：
+
+......（前略）一般的5V2A不能支撐GPU完全啟動的消耗，會快樂的直接跳機給你看。5V2A只是「能夠開機」的標準，如果只給這電量真的只能開機......（中略）
+Jetson Nano推薦使用DC供電5V4A，供電量足以讓Nano全速衝MobileNet V2 SSD了（後略）
+
+是的，Nano雖然號稱最低功耗5w，但實際上5w可能會連開機都有障礙。多次實測的結果，5V2A只要稍有不穩，Nano連開機都會開到一半閃關－－相信大家看的出來，這是10w。
+
+因此會建議使用更大一點的電流去啟動Nano板，這邊我們找了一下，最後使用了這個許多人推薦的DC供應器：
+
+[img[https://playrobot.com/img/cms/DTC0290/O1CN01CkIfXL1na8OxAjFEz_!!728545105_ok.jpg]]
+https://www.playrobot.com/batteries-power/2293-dc5v4a552521mm-jetson-nano.html
+
+Nano有三種供電方式：USB、DC、GPIO。其中USB就是我們5A2V的葬身之地（誤，他使用的是乙太網路孔旁邊的micro USB接頭，也是官方預設的供電方式（雖然幾乎沒有卵用）
+
+而DC則是我們這個供電器使用的供電頭，位置在HDMI的左邊。
+[img[https://i.imgur.com/MCi6JwA.jpg]]
+要啟用這種供電方式必須將這個接頭前方的''J48 Jumper''（就是照片中離我們最近的那個）短路才能使用。此供電方式可以使用到5V4A，執行各種機器學習任務應該都綽綽有餘了。
+
+至於最後的GPIO則是使用GPIO的5V接腳，可以使用兩個腳位推入5V3A x 2，是上述所有方法中能給出最大供電的方案。
+
+可惜那個方法有點麻煩，懶人如我還是使用DC就好。</pre>
+</div>
+<div created="20190905002626707" creator="ckshadow" modified="20200309013316594" modifier="ckshadow" tags="NV實戰測試" title="2.Nano與他的記憶體">
+<pre>我們在[[NVidia Jetson Nano Vs RPi4B]]中提到過，
+Pi4的系統本身大約會吃掉700MB記憶體上下，因此殘量大約為3.3GB；而Nano如果安裝的是原版未更動的系統的話，系統大約吃掉2.2GB，殘量約為1.7GB。
+
+當然我們對這結果不是很滿意，事實上，大多數的資源是被桌面系統吃掉的－－而我們其實並不需要這麼華麗的桌面。因此我們會把NV的桌面系統打掉，換成更輕量的LXDE以符合我們的需求。
+
+本方法參考：https://www.zaferarican.com/post/how-to-save-1gb-memory-on-jetson-nano-by-installing-lubuntu-desktop
+
+由於我們會拆掉桌面系統，因此大多數動作必須在文字介面執行。一個良好的方法是使用SSH連線，當然如果手邊有鍵盤滑鼠，也可以使用無GUI開機法直接接螢幕做。
+
+以下動作皆以SSH連線狀況執行。
+
+首先，先幹掉原本的桌面系統：
+
+```python
+sudo apt remove --purge ubuntu-desktop
+```
+
+接著我們要刪掉原本的Unity顯示介面，換成輕量一點的LXDM：
+
+```python
+sudo apt install lxdm
+sudo apt remove --purge gdm3
+```
+
+最後，裝上我們新的桌面系統：
+
+```python
+sudo apt install lxde
+```
+
+重新開機，應該可以明顯感受到跑得快了一點點？當然，使用free -h看的記憶體大概會多出整整1GB－－而這才是我們做了這趟工的重點。</pre>
+</div>
 <div created="20191125004832408" creator="ckshadow" modified="20191125015231344" modifier="ckshadow" tags="歷史軌跡" title="20191123_台北城市科大熱身賽">
 <pre>有幸在20191123這天到台北城市科大（後稱北城）做影像辨識賽的主審
 
@@ -15121,6 +15177,112 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 第三名的北城令人驚豔的是有最快的行駛速度，我想一部分是因為C++的速度上還是略為優於python，因此可以有餘裕繼續提升速度，但遺憾的是辨識成功次數都差一個......如果辨識穩定度更高一些，想必就會是無庸置疑的第一名。
 
 最後在15組中，有三組達成4個圖樣完全辨識成功（也就是第一名一組和第二名的兩組），有兩組3個圖樣辨識成功（皆為北城隊伍）。有成功行駛完賽道且有辨識到圖樣的有7組，實際上完賽的隊伍是居多數的。</pre>
+</div>
+<div created="20190905055958769" creator="ckshadow" modified="20200309013325234" modifier="ckshadow" tags="NV實戰測試" title="3.Nano與他的環境建置">
+<pre>NVidia Jetson Nano是一塊「號稱」邊緣運算用嵌入式板，許多規格上來看，熟悉使用樹莓派的用戶也可以很快速的上手它。
+
+然而想像是美好的，現實總是會給你一點落差，我們這邊會一項一項，告訴大家Nano使用中可能會遇到的各種坑。
+
+當然，這些坑填完之後Nano還是不錯的&gt;.0
+
+如同樹莓派，Nano也是依靠SD卡當作系統的，於是我們要先準備SD卡。
+
+......先放下你手上的16GB卡，我建議使用32GB的，原因我們後續會說明。
+
+https://developer.nvidia.com/jetson-nano-sd-card-image-r3221
+
+我們先從官方網站載下映像檔，並使用
+
+https://www.balena.io/etcher/
+
+這個程式來燒錄進SD卡中。這個動作因為映像檔有12GB肥，因此會花點時間。
+
+燒錄完成之後會噴一大堆視窗要你格式化，請耐心地取消掉，並「安全的移除裝置」。我在燒這個映像檔的時候曾經有一度失敗就是因為直接拔起它= =，所以請保險點，安全移除。
+
+接著建議接螢幕和鍵盤滑鼠，開機之後跑開機程序，有中文還是滿親切的。
+
+若開機開不起來，請注意Nano的電力問題，在[[Nano與他的電力供應]]中可以看到相關說明。
+
+Nano映像檔所使用的 Linux OS修改自 Ubuntu 18.04 版，並裝了 JetPack、cuda、cudnn、opencv 等軟體，省去我們安裝這些東西的麻煩。然而它造成了另外一個麻煩，我們在[[Nano與他的記憶體]]中會說明這點。
+
+進入系統後，我們首先該做的（絕對不是把桌面打掉）是安裝一些常用的函式庫，機器學習類的函式庫通常都可以直接裝，唯獨Tensorflow必須使用Nano板支援的版本：
+
+https://developer.nvidia.com/embedded/downloads#?search=TensorFlow
+
+注意：Nano板的CPU並沒有很好，因此使用pip安裝時，會花上一點點時間，請耐心等候它。我們安裝完這一大坨東西約略等了半天......
+
+安裝完之後就能正常使用......才怪，我們在啟動GPU前，要先做一些小設定，避免Nano版記憶體在執行過程中耗盡當機。這個時候我們需要使用SWAP來幫助它－－把部分的SD卡空間當作記憶體置換區。所以前面才說16G不推薦，因為理想上來說置換區約略為記憶體的1.5至2倍大比較好，也就是我們會用到6～8GB的置換......如果系統吃了12，那16G的卡就死在這邊啦。
+
+```python
+mkdir ~/swap/
+cd ~/swap/
+fallocate -l 8G swapfile
+ls -lh swapfile
+sudo chmod 600 swapfile
+ls -lh swapfile
+sudo mkswap swapfile
+sudo swapon swapfile
+swapon -s
+```
+
+依照上述指令，我們建立好了置換區，但每次開機都必須重新把這塊指定回置換區，有點麻煩，因此我們還需要兩個動作讓它開機自己指定：
+
+```python
+sudo nano /etc/fstab
+```
+
+開啟檔案之後在下面加上這一行：
+
+```python
+/home/ubuntu/swap/swapfile none swap sw 0 0
+```
+
+到這裡，我們勉強（？）大功告成，可以開始來一點恐怖的任務了。好消息是，Nano板上面的機器學習都不需要像神經棒或者Coral那樣轉檔案，電腦怎麼跑就怎麼跑～</pre>
+</div>
+<div created="20200303065849204" creator="ckshadow" modified="20200309013332562" modifier="ckshadow" tags="NV實戰測試" title="4.Nano與他的開機設定">
+<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-1.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-2.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-3.jpg]]</pre>
+</div>
+<div created="20200303070054829" creator="ckshadow" modified="20200309013342650" modifier="ckshadow" tags="NV實戰測試" title="5.Nano與他的終端機">
+<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-1.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-2.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-3.jpg]]</pre>
+</div>
+<div created="20200303070152061" creator="ckshadow" modified="20200309013351041" modifier="ckshadow" tags="NV實戰測試" title="6.Nano與他的Python">
+<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-1.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-2.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-3.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-4.jpg]]</pre>
+</div>
+<div created="20200303070309612" creator="ckshadow" modified="20200309013358689" modifier="ckshadow" tags="NV實戰測試" title="7.Nano與他的GPIO_LED">
+<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-1.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-2.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-3.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-4.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-5.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-6.jpg]]</pre>
+</div>
+<div created="20200303070418420" creator="ckshadow" modified="20200309013404441" modifier="ckshadow" tags="NV實戰測試" title="8.Nano與他的GPIO_按鈕開關">
+<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-1.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-2.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-3.jpg]]
+
+[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-4.jpg]]</pre>
 </div>
 <div created="20191230034706108" creator="ckshadow" modified="20191230034837881" modifier="ckshadow" tags="系統技巧" title="七吋觸控螢幕組裝與設定">
 <pre>&lt;a href=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片1.png&quot;&gt;&lt;img class=&quot;aligncenter size-full wp-image-6323&quot; src=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片1.png&quot; alt=&quot;投影片1&quot; width=&quot;720&quot; height=&quot;1040&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片2.png&quot;&gt;&lt;img class=&quot;aligncenter wp-image-6324 size-full&quot; src=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片2.png&quot; alt=&quot;投影片2&quot; width=&quot;720&quot; height=&quot;1040&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片3.png&quot;&gt;&lt;img class=&quot;aligncenter wp-image-6325 size-full&quot; src=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片3.png&quot; alt=&quot;投影片3&quot; width=&quot;720&quot; height=&quot;1040&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片4.png&quot;&gt;&lt;img class=&quot;aligncenter wp-image-6326 size-full&quot; src=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片4.png&quot; alt=&quot;投影片4&quot; width=&quot;720&quot; height=&quot;1040&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片5.png&quot;&gt;&lt;img class=&quot;aligncenter wp-image-6327 size-full&quot; src=&quot;http://www.playrobot.com/robotpress/wp-content/uploads/2018/11/投影片5.png&quot; alt=&quot;投影片5&quot; width=&quot;720&quot; height=&quot;1040&quot; /&gt;&lt;/a&gt;</pre>
@@ -16468,168 +16630,6 @@ ROS節點必須在掛載好core之後執行。</pre>
 
 在檔案遺失的這種情況下，我們只需要重新燒入檔案「還原檔案0253_kl26z_microbit_0x8000.hex」即可恢復。
 </pre>
-</div>
-<div created="20190905002626707" creator="ckshadow" modified="20191230091757970" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的記憶體">
-<pre>我們在[[NVidia Jetson Nano Vs RPi4B]]中提到過，
-Pi4的系統本身大約會吃掉700MB記憶體上下，因此殘量大約為3.3GB；而Nano如果安裝的是原版未更動的系統的話，系統大約吃掉2.2GB，殘量約為1.7GB。
-
-當然我們對這結果不是很滿意，事實上，大多數的資源是被桌面系統吃掉的－－而我們其實並不需要這麼華麗的桌面。因此我們會把NV的桌面系統打掉，換成更輕量的LXDE以符合我們的需求。
-
-本方法參考：https://www.zaferarican.com/post/how-to-save-1gb-memory-on-jetson-nano-by-installing-lubuntu-desktop
-
-由於我們會拆掉桌面系統，因此大多數動作必須在文字介面執行。一個良好的方法是使用SSH連線，當然如果手邊有鍵盤滑鼠，也可以使用無GUI開機法直接接螢幕做。
-
-以下動作皆以SSH連線狀況執行。
-
-首先，先幹掉原本的桌面系統：
-
-```python
-sudo apt remove --purge ubuntu-desktop
-```
-
-接著我們要刪掉原本的Unity顯示介面，換成輕量一點的LXDM：
-
-```python
-sudo apt install lxdm
-sudo apt remove --purge gdm3
-```
-
-最後，裝上我們新的桌面系統：
-
-```python
-sudo apt install lxde
-```
-
-重新開機，應該可以明顯感受到跑得快了一點點？當然，使用free -h看的記憶體大概會多出整整1GB－－而這才是我們做了這趟工的重點。</pre>
-</div>
-<div created="20200303070054829" creator="ckshadow" modified="20200303070146587" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的終端機">
-<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-1.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-2.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-3.jpg]]</pre>
-</div>
-<div created="20200303065849204" creator="ckshadow" modified="20200303070048826" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的開機設定">
-<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-1.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-2.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-3.jpg]]</pre>
-</div>
-<div created="20190905003602995" creator="ckshadow" modified="20191230091806314" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的電力供應">
-<pre>我們在[[NVidia Jetson Nano Vs RPi4B]]中有以下論述：
-
-......（前略）一般的5V2A不能支撐GPU完全啟動的消耗，會快樂的直接跳機給你看。5V2A只是「能夠開機」的標準，如果只給這電量真的只能開機......（中略）
-Jetson Nano推薦使用DC供電5V4A，供電量足以讓Nano全速衝MobileNet V2 SSD了（後略）
-
-是的，Nano雖然號稱最低功耗5w，但實際上5w可能會連開機都有障礙。多次實測的結果，5V2A只要稍有不穩，Nano連開機都會開到一半閃關－－相信大家看的出來，這是10w。
-
-因此會建議使用更大一點的電流去啟動Nano板，這邊我們找了一下，最後使用了這個許多人推薦的DC供應器：
-
-[img[https://playrobot.com/img/cms/DTC0290/O1CN01CkIfXL1na8OxAjFEz_!!728545105_ok.jpg]]
-https://www.playrobot.com/batteries-power/2293-dc5v4a552521mm-jetson-nano.html
-
-Nano有三種供電方式：USB、DC、GPIO。其中USB就是我們5A2V的葬身之地（誤，他使用的是乙太網路孔旁邊的micro USB接頭，也是官方預設的供電方式（雖然幾乎沒有卵用）
-
-而DC則是我們這個供電器使用的供電頭，位置在HDMI的左邊。
-[img[https://i.imgur.com/MCi6JwA.jpg]]
-要啟用這種供電方式必須將這個接頭前方的''J48 Jumper''（就是照片中離我們最近的那個）短路才能使用。此供電方式可以使用到5V4A，執行各種機器學習任務應該都綽綽有餘了。
-
-至於最後的GPIO則是使用GPIO的5V接腳，可以使用兩個腳位推入5V3A x 2，是上述所有方法中能給出最大供電的方案。
-
-可惜那個方法有點麻煩，懶人如我還是使用DC就好。</pre>
-</div>
-<div created="20190905055958769" creator="ckshadow" modified="20191230091813457" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的環境建置">
-<pre>NVidia Jetson Nano是一塊「號稱」邊緣運算用嵌入式板，許多規格上來看，熟悉使用樹莓派的用戶也可以很快速的上手它。
-
-然而想像是美好的，現實總是會給你一點落差，我們這邊會一項一項，告訴大家Nano使用中可能會遇到的各種坑。
-
-當然，這些坑填完之後Nano還是不錯的&gt;.0
-
-如同樹莓派，Nano也是依靠SD卡當作系統的，於是我們要先準備SD卡。
-
-......先放下你手上的16GB卡，我建議使用32GB的，原因我們後續會說明。
-
-https://developer.nvidia.com/jetson-nano-sd-card-image-r3221
-
-我們先從官方網站載下映像檔，並使用
-
-https://www.balena.io/etcher/
-
-這個程式來燒錄進SD卡中。這個動作因為映像檔有12GB肥，因此會花點時間。
-
-燒錄完成之後會噴一大堆視窗要你格式化，請耐心地取消掉，並「安全的移除裝置」。我在燒這個映像檔的時候曾經有一度失敗就是因為直接拔起它= =，所以請保險點，安全移除。
-
-接著建議接螢幕和鍵盤滑鼠，開機之後跑開機程序，有中文還是滿親切的。
-
-若開機開不起來，請注意Nano的電力問題，在[[Nano與他的電力供應]]中可以看到相關說明。
-
-Nano映像檔所使用的 Linux OS修改自 Ubuntu 18.04 版，並裝了 JetPack、cuda、cudnn、opencv 等軟體，省去我們安裝這些東西的麻煩。然而它造成了另外一個麻煩，我們在[[Nano與他的記憶體]]中會說明這點。
-
-進入系統後，我們首先該做的（絕對不是把桌面打掉）是安裝一些常用的函式庫，機器學習類的函式庫通常都可以直接裝，唯獨Tensorflow必須使用Nano板支援的版本：
-
-https://developer.nvidia.com/embedded/downloads#?search=TensorFlow
-
-注意：Nano板的CPU並沒有很好，因此使用pip安裝時，會花上一點點時間，請耐心等候它。我們安裝完這一大坨東西約略等了半天......
-
-安裝完之後就能正常使用......才怪，我們在啟動GPU前，要先做一些小設定，避免Nano版記憶體在執行過程中耗盡當機。這個時候我們需要使用SWAP來幫助它－－把部分的SD卡空間當作記憶體置換區。所以前面才說16G不推薦，因為理想上來說置換區約略為記憶體的1.5至2倍大比較好，也就是我們會用到6～8GB的置換......如果系統吃了12，那16G的卡就死在這邊啦。
-
-```python
-mkdir ~/swap/
-cd ~/swap/
-fallocate -l 8G swapfile
-ls -lh swapfile
-sudo chmod 600 swapfile
-ls -lh swapfile
-sudo mkswap swapfile
-sudo swapon swapfile
-swapon -s
-```
-
-依照上述指令，我們建立好了置換區，但每次開機都必須重新把這塊指定回置換區，有點麻煩，因此我們還需要兩個動作讓它開機自己指定：
-
-```python
-sudo nano /etc/fstab
-```
-
-開啟檔案之後在下面加上這一行：
-
-```python
-/home/ubuntu/swap/swapfile none swap sw 0 0
-```
-
-到這裡，我們勉強（？）大功告成，可以開始來一點恐怖的任務了。好消息是，Nano板上面的機器學習都不需要像神經棒或者Coral那樣轉檔案，電腦怎麼跑就怎麼跑～</pre>
-</div>
-<div created="20200303070418420" creator="ckshadow" modified="20200303070501786" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的GPIO_按鈕開關">
-<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-1.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-2.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-3.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-4.jpg]]</pre>
-</div>
-<div created="20200303070309612" creator="ckshadow" modified="20200303070405274" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的GPIO_LED">
-<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-1.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-2.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-3.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-4.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-5.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_LED-6.jpg]]</pre>
-</div>
-<div created="20200303070152061" creator="ckshadow" modified="20200303070302225" modifier="ckshadow" tags="NV實戰測試" title="Nano與他的Python">
-<pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-1.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-2.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-3.jpg]]
-
-[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-4.jpg]]</pre>
 </div>
 <div created="20200220080714573" creator="ckshadow" modified="20200220080832370" modifier="ckshadow" tags="機器人作業系統（ROS）" title="Node">
 <pre>Node是ROS系統內最小的一個單位，位在Package底下，通常一個Node代表一個可以執行的程式。
