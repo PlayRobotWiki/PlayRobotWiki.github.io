@@ -495,13 +495,23 @@ Error message and password prompt
 
 <li>1.Nano與他的電力供應</li>
 
+<li>1.ROS基本介紹</li>
+
+<li>2.Core</li>
+
 <li>2.Nano與他的記憶體</li>
 
 <li>20191123_台北城市科大熱身賽</li>
 
 <li>3.Nano與他的環境建置</li>
 
+<li>3.Node</li>
+
+<li>4.發佈與訂閱（上）</li>
+
 <li>4.Nano與他的開機設定</li>
+
+<li>5.發佈與訂閱（下）</li>
 
 <li>5.Nano與他的終端機</li>
 
@@ -553,8 +563,6 @@ Error message and password prompt
 
 <li>智慧機器人</li>
 
-<li>發佈與訂閱（上）</li>
-
 <li>評測與比較</li>
 
 <li>開發板</li>
@@ -599,8 +607,6 @@ Error message and password prompt
 
 <li>ckshadow</li>
 
-<li>Core</li>
-
 <li>DonkeyCar</li>
 
 <li>Mega2560</li>
@@ -608,8 +614,6 @@ Error message and password prompt
 <li>Microbit</li>
 
 <li>Microbit修復方法</li>
-
-<li>Node</li>
 
 <li>NV實戰測試</li>
 
@@ -634,8 +638,6 @@ Error message and password prompt
 <li>Respeaker Core V2</li>
 
 <li>Respeaker mic array v2</li>
-
-<li>ROS基本介紹</li>
 
 <li>TableOfContents</li>
 
@@ -14128,7 +14130,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200309085606116" creator="ckshadow" list="8.Nano與他的GPIO_按鈕開關 關於我們" modified="20200309090818261" modifier="ckshadow" title="$:/StoryList">
+<div created="20200310062542365" creator="ckshadow" list="" modified="20200310063508427" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15116,6 +15118,36 @@ Nano有三種供電方式：USB、DC、GPIO。其中USB就是我們5A2V的葬身
 
 可惜那個方法有點麻煩，懶人如我還是使用DC就好。</pre>
 </div>
+<div created="20200220080544885" creator="ckshadow" modified="20200310063500684" modifier="ckshadow" tags="機器人作業系統（ROS）" title="1.ROS基本介紹">
+<pre>ROS（機器人作業系統，Robot Operating System），是專為機器人軟體開發所設計出來的一套電腦作業系統架構。
+提供類似於作業系統的服務，包括硬體抽象描述、底層驅動程序管理、共用功能的執行、程序間消息傳遞、程序發行包管理，它也提供一些工具和庫用於獲取、建立、編寫和執行多機融合的程序。
+
+ROS的運行架構是一種使用ROS通信模塊實現模塊間P2P鬆耦合的網絡連接架構。
+翻成白話就是：ROS的node間通訊類似P2P形式
+通訊包括：
+基於服務的同步RPC（遠程過程調用）通訊，也就是類似網頁的服務。
+基於Topic的異步數據流通訊，還有參數伺服器上的數據存儲，類似於MQTT的形式。
+
+ROS主要是分布式處理框架（在ROS中又名Nodes）。這使可執行文件能被單獨設計，並且在運行時鬆散耦合。
+這些過程可以封裝到數據包（Packages）和堆疊（Stacks）中，以便於共享和分發。
+
+ROS現在可以直接安裝於Ubuntu系統上，可透過編譯的方式安裝於Raspberry上。</pre>
+</div>
+<div created="20200225031431841" creator="ckshadow" modified="20200310063507288" modifier="ckshadow" tags="機器人作業系統（ROS）" title="2.Core">
+<pre>ROS系統的特色之一，就是不管你要跑什麼，都需要使用一個命令列視窗去執行roscore這個指令。事實上，當我們安裝完ROS之後第一件做的檢查也是確認這個core有正常運作。
+
+ros本身可以視作一種網路結構（RTPS），每一個節點就是一個IP－－而core則扮演著管理訊息、註冊節點的角色。透過roscore，我們可以方便的訪問網路內的其他節點，並傳遞訊息。
+
+也因此，所有ROS類節點執行前都必須要在core執行之後才能進行，否則無法註冊要怎麼加入網路中呢？
+
+而core的另外一個功能是保存那些整個網路都必須使用的變數，而這個就留待日後討論參數的時候再說明了。
+
+小結：
+
+&lt;b&gt;不論發生什麼事情&lt;/b&gt;
+
+ROS節點必須在掛載好core之後執行。</pre>
+</div>
 <div created="20190905002626707" creator="ckshadow" modified="20200309013316594" modifier="ckshadow" tags="NV實戰測試" title="2.Nano與他的記憶體">
 <pre>我們在[[NVidia Jetson Nano Vs RPi4B]]中提到過，
 Pi4的系統本身大約會吃掉700MB記憶體上下，因此殘量大約為3.3GB；而Nano如果安裝的是原版未更動的系統的話，系統大約吃掉2.2GB，殘量約為1.7GB。
@@ -15239,12 +15271,94 @@ sudo nano /etc/fstab
 
 到這裡，我們勉強（？）大功告成，可以開始來一點恐怖的任務了。好消息是，Nano板上面的機器學習都不需要像神經棒或者Coral那樣轉檔案，電腦怎麼跑就怎麼跑～</pre>
 </div>
+<div created="20200220080714573" creator="ckshadow" modified="20200310063513004" modifier="ckshadow" tags="機器人作業系統（ROS）" title="3.Node">
+<pre>Node是ROS系統內最小的一個單位，位在Package底下，通常一個Node代表一個可以執行的程式。
+一個Package可以有很多個Node，用來執行不同的任務，例如一個人物偵測模組，可能內部就要有獲取圖片、影像處理、特徵點偵測的程式等等。
+每個Node都可以跟別的Node透過Topic、Service或其他方式來溝通、獲取資料。
+
+Node還有一個很大的特點就是他可以使用不同的語言來撰寫。
+以人物偵測為例，獲取圖片及影像處理的部分可以用Python來寫。
+特徵點偵測比較注重效能，就可以改用C++來寫，這些不同的Node都可以放在同一個Package裡面，形成一個人物偵測的模組。
+
+總結一下Node的特性：
+
+1.最小的執行單位。
+
+2.可以使用各種語言。
+
+3.因為獨立執行，單節點崩潰不會影響全部。
+
+4.節點間可以互相通訊。</pre>
+</div>
+<div created="20200225032438577" creator="ckshadow" modified="20200310063519219" modifier="ckshadow" tags="機器人作業系統（ROS）" title="4.發佈與訂閱（上）">
+<pre>前面（[[Core]]）提到過，ROS的系統架構是類似於RTPS網路結構－－其為 Real-Time Publisher-Subscriber Protocol的縮寫。從名字來看，這個網路結構的通訊是由發佈以及訂閱構成。而實際上也確實是如此－－ROS節點間最常用的通訊方式就是發佈與訂閱了。
+
+我們來看一個簡單的推送範例：
+
+```python
+#!/usr/bin/env python3
+import rospy 
+from std_msgs.msg import String
+ 
+def talker():
+    #指定他是推送訊息的節點
+    pub = rospy.Publisher('test', String, queue_size=10)
+    rospy.init_node('pubTest', anonymous=True) 
+    rate = rospy.Rate(1) 
+     
+    while not rospy.is_shutdown(): 
+        hello_str = &quot;hello world %s&quot; % rospy.get_time() 
+        rospy.loginfo(hello_str) 
+        #跟MQTT很像的發送法
+        pub.publish(hello_str) 
+        rate.sleep() 
+
+if __name__ == '__main__': 
+    talker() 
+```
+
+這個範例中，我們持續對test這個頻道發送hello world + 時間訊息。
+
+執行roscore+這個節點後，可以使用rostopic去查看是否新增了一個test頻道，並用rostopic的echo指令去監聽頻道，確認發送狀況。
+
+下一次，我們會來介紹怎麼用python接收頻道訊息。</pre>
+</div>
 <div created="20200303065849204" creator="ckshadow" modified="20200309013332562" modifier="ckshadow" tags="NV實戰測試" title="4.Nano與他的開機設定">
 <pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-1.jpg]]
 
 [img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-2.jpg]]
 
 [img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-3.jpg]]</pre>
+</div>
+<div created="20200310062549268" creator="ckshadow" modified="20200310063527670" modifier="ckshadow" tags="機器人作業系統（ROS）" title="5.發佈與訂閱（下）">
+<pre>有了發送節點，接著我們要來設計接收節點了。
+
+承接[[發佈與訂閱（上）]]，我們來看一個簡單的接收範例：
+
+```python
+#!/usr/bin/env python 
+import rospy 
+from std_msgs.msg import String 
+
+def callback(data): 
+    #data.data就是收到的訊息，可以依據這訊息做後續處理。
+    rospy.loginfo(rospy.get_caller_id() + &quot;I heard %s&quot;, data.data) 
+
+def listener(): 
+    rospy.init_node('listener', anonymous=True) 
+    rospy.Subscriber(&quot;chatter&quot;, String, callback) 
+    #持續的接收
+    rospy.spin() 
+
+if __name__ == '__main__': listener()
+
+```
+
+若你沒有關閉[[發佈與訂閱（上）]]中的節點，此時執行這段程式碼，應該會開始看到印出&quot;hello world + 時間戳記&quot;的字串了。
+
+ROS1.0中，還是以函式的方式呼叫，因此使用rospy.spin()指令維持函式的執行（若沒加這行，這段程式會執行後馬上消失）。
+
+而接收的資料會在data.data中，因應接收資料做出相應的反應，相信各位比我更擅長，這邊就不多做處理了。</pre>
 </div>
 <div created="20200303070054829" creator="ckshadow" modified="20200309013342650" modifier="ckshadow" tags="NV實戰測試" title="5.Nano與他的終端機">
 <pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-1.jpg]]
@@ -15950,39 +16064,6 @@ DEMO完整影片：
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20200225032438577" creator="ckshadow" modified="20200225033555480" modifier="ckshadow" tags="機器人作業系統（ROS）" title="發佈與訂閱（上）">
-<pre>前面（[[Core]]）提到過，ROS的系統架構是類似於RTPS網路結構－－其為 Real-Time Publisher-Subscriber Protocol的縮寫。從名字來看，這個網路結構的通訊是由發佈以及訂閱構成。而實際上也確實是如此－－ROS節點間最常用的通訊方式就是發佈與訂閱了。
-
-我們來看一個簡單的推送範例：
-
-```python
-#!/usr/bin/env python3
-import rospy 
-from std_msgs.msg import String
- 
-def talker():
-    #指定他是推送訊息的節點
-    pub = rospy.Publisher('test', String, queue_size=10)
-    rospy.init_node('pubTest', anonymous=True) 
-    rate = rospy.Rate(1) 
-     
-    while not rospy.is_shutdown(): 
-        hello_str = &quot;hello world %s&quot; % rospy.get_time() 
-        rospy.loginfo(hello_str) 
-        #跟MQTT很像的發送法
-        pub.publish(hello_str) 
-        rate.sleep() 
-
-if __name__ == '__main__': 
-    talker() 
-```
-
-這個範例中，我們持續對test這個頻道發送hello world + 時間訊息。
-
-執行roscore+這個節點後，可以使用rostopic去查看是否新增了一個test頻道，並用rostopic的echo指令去監聽頻道，確認發送狀況。
-
-下一次，我們會來介紹怎麼用python接收頻道訊息。</pre>
-</div>
 <div created="20190903060123983" creator="ckshadow" modified="20200106010824432" modifier="ckshadow" tags="TableOfContents" title="評測與比較">
 <pre>主要發佈一些測試、性能報告
 
@@ -16572,21 +16653,6 @@ AI界目前的認知，大多認為非監督式比較接近真實智慧，我們
 
 然而專長是人工智慧領域的自然語言分析和資料探勘（跟上面提到的到底有什麼關係......）</pre>
 </div>
-<div created="20200225031431841" creator="ckshadow" modified="20200225032425343" modifier="ckshadow" tags="機器人作業系統（ROS）" title="Core">
-<pre>ROS系統的特色之一，就是不管你要跑什麼，都需要使用一個命令列視窗去執行roscore這個指令。事實上，當我們安裝完ROS之後第一件做的檢查也是確認這個core有正常運作。
-
-ros本身可以視作一種網路結構（RTPS），每一個節點就是一個IP－－而core則扮演著管理訊息、註冊節點的角色。透過roscore，我們可以方便的訪問網路內的其他節點，並傳遞訊息。
-
-也因此，所有ROS類節點執行前都必須要在core執行之後才能進行，否則無法註冊要怎麼加入網路中呢？
-
-而core的另外一個功能是保存那些整個網路都必須使用的變數，而這個就留待日後討論參數的時候再說明了。
-
-小結：
-
-&lt;b&gt;不論發生什麼事情&lt;/b&gt;
-
-ROS節點必須在掛載好core之後執行。</pre>
-</div>
 <div created="20191227014155974" creator="ckshadow" modified="20200106011008640" modifier="ckshadow" tags="[[NVidia Jetson Nano]] [[Raspberry Pi 3B+/4B]]" title="DonkeyCar">
 <pre>NV和樹莓派皆可使用的&quot;開源&quot;專案
 
@@ -16630,25 +16696,6 @@ ROS節點必須在掛載好core之後執行。</pre>
 
 在檔案遺失的這種情況下，我們只需要重新燒入檔案「還原檔案0253_kl26z_microbit_0x8000.hex」即可恢復。
 </pre>
-</div>
-<div created="20200220080714573" creator="ckshadow" modified="20200220080832370" modifier="ckshadow" tags="機器人作業系統（ROS）" title="Node">
-<pre>Node是ROS系統內最小的一個單位，位在Package底下，通常一個Node代表一個可以執行的程式。
-一個Package可以有很多個Node，用來執行不同的任務，例如一個人物偵測模組，可能內部就要有獲取圖片、影像處理、特徵點偵測的程式等等。
-每個Node都可以跟別的Node透過Topic、Service或其他方式來溝通、獲取資料。
-
-Node還有一個很大的特點就是他可以使用不同的語言來撰寫。
-以人物偵測為例，獲取圖片及影像處理的部分可以用Python來寫。
-特徵點偵測比較注重效能，就可以改用C++來寫，這些不同的Node都可以放在同一個Package裡面，形成一個人物偵測的模組。
-
-總結一下Node的特性：
-
-1.最小的執行單位。
-
-2.可以使用各種語言。
-
-3.因為獨立執行，單節點崩潰不會影響全部。
-
-4.節點間可以互相通訊。</pre>
 </div>
 <div created="20191230091623085" creator="ckshadow" modified="20200106011034729" modifier="ckshadow" tags="[[NVidia Jetson Nano]]" title="NV實戰測試">
 <pre>NV的各種坑，跟填坑的方法
@@ -17323,21 +17370,6 @@ pixel_ring.trace()
 開啟DOA模式，注意這個函式實測時他會變更wakeup的角度，不推薦直接使用。
 
 *注意：有關V2的函式必須以sudo權限執行</pre>
-</div>
-<div created="20200220080544885" creator="ckshadow" modified="20200220080910506" modifier="ckshadow" tags="機器人作業系統（ROS）" title="ROS基本介紹">
-<pre>ROS（機器人作業系統，Robot Operating System），是專為機器人軟體開發所設計出來的一套電腦作業系統架構。
-提供類似於作業系統的服務，包括硬體抽象描述、底層驅動程序管理、共用功能的執行、程序間消息傳遞、程序發行包管理，它也提供一些工具和庫用於獲取、建立、編寫和執行多機融合的程序。
-
-ROS的運行架構是一種使用ROS通信模塊實現模塊間P2P鬆耦合的網絡連接架構。
-翻成白話就是：ROS的node間通訊類似P2P形式
-通訊包括：
-基於服務的同步RPC（遠程過程調用）通訊，也就是類似網頁的服務。
-基於Topic的異步數據流通訊，還有參數伺服器上的數據存儲，類似於MQTT的形式。
-
-ROS主要是分布式處理框架（在ROS中又名Nodes）。這使可執行文件能被單獨設計，並且在運行時鬆散耦合。
-這些過程可以封裝到數據包（Packages）和堆疊（Stacks）中，以便於共享和分發。
-
-ROS現在可以直接安裝於Ubuntu系統上，可透過編譯的方式安裝於Raspberry上。</pre>
 </div>
 <div caption="目錄" created="20190902070118483" creator="ckshadow" list-after="$:/core/ui/SideBar/Open" modified="20200106010732898" modifier="ckshadow" tags="$:/tags/SideBar" title="TableOfContents">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
