@@ -631,6 +631,8 @@ Error message and password prompt
 
 <li>python之「禪」</li>
 
+<li>python的錯誤級別</li>
+
 <li>Python學堂</li>
 
 <li>Raspberry Pi 3B+/4B</li>
@@ -14076,7 +14078,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190903063020075" creator="ckshadow" modified="20190903063020076" modifier="ckshadow" title="$:/state/toc/TableOfContents-python學堂--118161433">
 <pre>open</pre>
 </div>
-<div created="20190905032218274" creator="ckshadow" modified="20200106010645184" modifier="ckshadow" title="$:/state/toc/TableOfContents-Python學堂--118161433">
+<div created="20190905032218274" creator="ckshadow" modified="20200313064048361" modifier="ckshadow" title="$:/state/toc/TableOfContents-Python學堂--118161433">
 <pre>close</pre>
 </div>
 <div created="20190902070744017" creator="ckshadow" modified="20190905064249011" modifier="ckshadow" title="$:/state/toc/TableOfContents-Raspberry Pi 3B+/4B--118161433">
@@ -14109,8 +14111,8 @@ very-muted-foreground: #888888</pre>
 <div created="20200219092346190" creator="ckshadow" modified="20200219092346190" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino/感測器-溫溼度感測--118161433">
 <pre>open</pre>
 </div>
-<div created="20191230091559985" creator="ckshadow" modified="20191230091838649" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433">
-<pre>close</pre>
+<div created="20191230091559985" creator="ckshadow" modified="20200313062652256" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433">
+<pre>open</pre>
 </div>
 <div created="20191230091755650" creator="ckshadow" modified="20191230091755650" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-NV實戰測試--118161433">
 <pre>open</pre>
@@ -14130,7 +14132,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200310062542365" creator="ckshadow" list="" modified="20200310063508427" modifier="ckshadow" title="$:/StoryList">
+<div created="20200313062654427" creator="ckshadow" list="關於我們" modified="20200313064032698" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -16374,7 +16376,7 @@ python3 manage.py drive
 並打開瀏覽器，輸入127.0.0.1:8887/drive來檢查一下控制狀態囉～
 </pre>
 </div>
-<div created="20190926021747062" creator="ckshadow" modified="20190926070230764" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="樹莓派系統建置">
+<div created="20190926021747062" creator="ckshadow" modified="20200313062923266" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="樹莓派系統建置">
 <pre>!!''1.至官網下載映像檔''
 
 https://www.raspberrypi.org/downloads/
@@ -16435,7 +16437,7 @@ A3.比映像檔大就好。
 
 Q4.可以裝ROS嗎？
 
-A4.樹莓派的raspbian不能直接裝ROS，手續複雜且不穩定，建議直接改裝ubuntu</pre>
+A4.樹莓派的raspbian不能直接裝ROS，必須採用源碼編譯的方式安裝－－從這觀點來看，可以。</pre>
 </div>
 <div created="20200220080519685" creator="ckshadow" modified="20200220080542755" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="機器人作業系統（ROS）">
 <pre></pre>
@@ -17166,6 +17168,21 @@ Namespaces are one honking great idea -- let's do more of those!
 &lt;/ul&gt;
 
 當我們打開this的原始檔時，可以發現更有趣的地方－－尤其是這個原始碼完全違反他自己上面打的那坨東西－－這就留待下次再討論吧。</pre>
+</div>
+<div created="20200313064035460" creator="ckshadow" modified="20200313070726365" modifier="ckshadow" tags="Python學堂" title="python的錯誤級別">
+<pre>程式除錯上，我們很依賴所謂的錯誤訊息，但錯誤訊息實際上分為很多種類－－在python中，分為debug、info、warning、error以及critical五個級別。
+
+Debug：詳細訊息，在很多IDLE裡面會被省略，但從命令列視窗執行時會看到一大堆。我們使用語音庫的時候會看到的一堆ALSA訊息就是這類。
+
+Info：確認正常執行的訊息，通常不用理會這個（？）
+
+Warning：通常是一些警告，比方說我們使用GPIO時，如果上次執行的檔案並沒有Release執行過的GPIO設定，而下次執行時又指定了同樣的腳位，那就會跳出「複寫上一次設定」的警告。本身不一定影響執行，只是提醒。
+
+Error：通常是程式出錯的時候會看到他，此階段開始程式都會直接停止，且若為多線程程式，很容易發生卡死在後端的狀況。
+
+Critical：看到這行通常發生了巨大的錯誤，伴隨著程式崩潰甚至可能影響到系統一些服務。
+
+......希望有生之年不要看到Critical連發的慘案。</pre>
 </div>
 <div created="20190903060053985" creator="ckshadow" modified="20200106011108809" modifier="ckshadow" tags="TableOfContents" title="Python學堂">
 <pre>軟體是一門巨大的學問......而且直到現在都沒有看到盡頭的一天
