@@ -529,11 +529,15 @@ Error message and password prompt
 
 <li>4.發佈與訂閱（上）</li>
 
+<li>4.發佈與訂閱（上）_ROS2</li>
+
 <li>4.Nano與他的開機設定</li>
 
 <li>5.為什麼我們遲遲不引入DonkeyCar</li>
 
 <li>5.發佈與訂閱（下）</li>
+
+<li>5.發佈與訂閱（下）_ROS2</li>
 
 <li>5.Nano與他的終端機</li>
 
@@ -14103,8 +14107,8 @@ very-muted-foreground: #888888</pre>
 <div created="20200327055422179" creator="ckshadow" modified="20200327055422179" modifier="ckshadow" title="$:/state/toc/TableOfContents/自製產品-3D立體教材系列--118161433">
 <pre>open</pre>
 </div>
-<div created="20190905032341778" creator="ckshadow" modified="20200106010618872" modifier="ckshadow" title="$:/state/toc/TableOfContents/自製產品-智慧機器人--118161433">
-<pre>close</pre>
+<div created="20190905032341778" creator="ckshadow" modified="20200331062851011" modifier="ckshadow" title="$:/state/toc/TableOfContents/自製產品-智慧機器人--118161433">
+<pre>open</pre>
 </div>
 <div created="20190925024151369" creator="ckshadow" modified="20200327055610968" modifier="ckshadow" title="$:/state/toc/TableOfContents/競賽專區-影像辨識競賽--118161433">
 <pre>close</pre>
@@ -14154,7 +14158,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200327052341840" creator="ckshadow" list="關於我們" modified="20200327064602988" modifier="ckshadow" title="$:/StoryList">
+<div created="20200331063222804" creator="ckshadow" list="關於我們" modified="20200331065050300" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15526,7 +15530,7 @@ Node還有一個很大的特點就是他可以使用不同的語言來撰寫。
 
 4.節點間可以互相通訊。</pre>
 </div>
-<div created="20200327062358501" creator="ckshadow" modified="20200327065233364" modifier="ckshadow" tags="機器人作業系統2.0（ROS2.0）" title="3.Node_ROS2">
+<div created="20200327062358501" creator="ckshadow" modified="20200331065057476" modifier="ckshadow" tags="機器人作業系統2.0（ROS2.0）" title="3.Node_ROS2">
 <pre>ROS2保持了ROS1的特性－－當然Node也完整維持了。差別主要發生在，ROS2比較偏物件導向，因此Node的各種方法是依照繼承而來的：
 
 ```python
@@ -15586,6 +15590,45 @@ if __name__ == '__main__':
 執行roscore+這個節點後，可以使用rostopic去查看是否新增了一個test頻道，並用rostopic的echo指令去監聽頻道，確認發送狀況。
 
 下一次，我們會來介紹怎麼用python接收頻道訊息。</pre>
+</div>
+<div created="20200331063754006" creator="ckshadow" modified="20200331065049236" modifier="ckshadow" tags="機器人作業系統2.0（ROS2.0）" title="4.發佈與訂閱（上）_ROS2">
+<pre>ROS2雖然從RTPS網路結構改成了DDS。但實際的訊息傳輸還是由發佈以及訂閱構成。唯一的差別大概在於，ROS2大量使用物件導向式的寫法。
+
+我們來看一個簡單的推送範例：
+
+```python
+import rclpy 
+from rclpy.node import Node 
+from std_msgs.msg import String 
+class Ex3_pub(Node): 
+    def __init__(self): 
+        super().__init__('Ex3_pub')
+        # 定義節點包含一個發送端 
+        self.publisher_ = self.create_publisher(String, 'chatter', 10) 
+        self.timer = self.create_timer(1, self.timer_callback) 
+    def timer_callback(self): 
+        msg = String() 
+        # 由於是物件導向，訊息也是字串物件裡面的一個屬性
+        msg.data = 'Hello World'
+        # 呼叫發送端發送訊息
+        self.publisher_.publish(msg) 
+
+if __name__ == '__main__': 
+    rclpy.init() 
+    ex3_publisher = Ex3_pub() 
+    rclpy.spin(ex3_publisher) 
+    ex3_publisher.destroy_node() 
+    rclpy.shutdown()
+
+```
+
+這個範例中，我們持續對chatter這個頻道發送hello world 訊息。
+
+我們可以使用ros2 topic list去查看是否新增了一個chatter頻道，並用ros2 topic echo /chatter指令去監聽頻道，確認發送狀況。
+
+這些步驟其實和ROS1相去不遠，實際上從1改到2並不會花上太多工夫－－唯一需要克服的物件導向，若是程式設計人員也不是什麼障礙。
+
+下一次，我們會來介紹怎麼用python接收ROS2的頻道訊息。</pre>
 </div>
 <div created="20200303065849204" creator="ckshadow" modified="20200309013332562" modifier="ckshadow" tags="NV實戰測試" title="4.Nano與他的開機設定">
 <pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的開機設定-1.jpg]]
@@ -15647,6 +15690,40 @@ if __name__ == '__main__': listener()
 ROS1.0中，還是以函式的方式呼叫，因此使用rospy.spin()指令維持函式的執行（若沒加這行，這段程式會執行後馬上消失）。
 
 而接收的資料會在data.data中，因應接收資料做出相應的反應，相信各位比我更擅長，這邊就不多做處理了。</pre>
+</div>
+<div created="20200331063815534" creator="ckshadow" modified="20200331065040293" modifier="ckshadow" tags="機器人作業系統2.0（ROS2.0）" title="5.發佈與訂閱（下）_ROS2">
+<pre>有了發送節點，接著我們要來設計接收節點了。
+
+承接[[4.發佈與訂閱（上）_ROS2]]，我們來看一個簡單的接收範例：
+
+```python
+import rclpy 
+from rclpy.node import Node 
+from std_msgs.msg import String 
+
+class Ex3_sub(Node): 
+    def __init__(self): 
+        super().__init__('Ex3_sub') 
+        self.subscription = self.create_subscription
+ (String,&quot;chatter&quot;,self.listener_callback,10) 
+        self.subscription #prevent unused variable warning 
+
+def listener_callback(self, msg): 
+        self.get_logger().info('I heard: &quot;%s&quot;' % msg.data) 
+
+if __name__ == '__main__': 
+    rclpy.init() 
+    ex3_subscriber = Ex3_sub() 
+    rclpy.spin(ex3_subscriber) 
+    ex3_subscriber.destroy_node() 
+    rclpy.shutdown()
+```
+
+若你沒有關閉[[4.發佈與訂閱（上）_ROS2]]中的節點，此時執行這段程式碼，應該會開始看到印出&quot;hello world&quot;字串了。
+
+ROS1.0中，還是以函式的方式呼叫，因此使用rospy.spin()指令維持函式的執行。而ROS2.0也差不多，只差在必須把要維持的物件傳遞給他而已。
+
+而接收的資料會在msg.data中，因應接收資料做出相應的反應，相信各位比我更擅長，這邊就不多做處理了。</pre>
 </div>
 <div created="20200303070054829" creator="ckshadow" modified="20200309013342650" modifier="ckshadow" tags="NV實戰測試" title="5.Nano與他的終端機">
 <pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-1.jpg]]
