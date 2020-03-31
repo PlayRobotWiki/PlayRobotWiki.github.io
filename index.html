@@ -14158,7 +14158,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200331063222804" creator="ckshadow" list="關於我們" modified="20200331065050300" modifier="ckshadow" title="$:/StoryList">
+<div created="20200331082156098" creator="ckshadow" list="5.發佈與訂閱（下）_ROS2 4.發佈與訂閱（上）_ROS2 關於我們" modified="20200331082215001" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15691,7 +15691,7 @@ ROS1.0中，還是以函式的方式呼叫，因此使用rospy.spin()指令維�
 
 而接收的資料會在data.data中，因應接收資料做出相應的反應，相信各位比我更擅長，這邊就不多做處理了。</pre>
 </div>
-<div created="20200331063815534" creator="ckshadow" modified="20200331065040293" modifier="ckshadow" tags="機器人作業系統2.0（ROS2.0）" title="5.發佈與訂閱（下）_ROS2">
+<div created="20200331063815534" creator="ckshadow" modified="20200331082244594" modifier="ckshadow" tags="機器人作業系統2.0（ROS2.0）" title="5.發佈與訂閱（下）_ROS2">
 <pre>有了發送節點，接著我們要來設計接收節點了。
 
 承接[[4.發佈與訂閱（上）_ROS2]]，我們來看一個簡單的接收範例：
@@ -15708,7 +15708,7 @@ class Ex3_sub(Node):
  (String,&quot;chatter&quot;,self.listener_callback,10) 
         self.subscription #prevent unused variable warning 
 
-def listener_callback(self, msg): 
+    def listener_callback(self, msg): 
         self.get_logger().info('I heard: &quot;%s&quot;' % msg.data) 
 
 if __name__ == '__main__': 
