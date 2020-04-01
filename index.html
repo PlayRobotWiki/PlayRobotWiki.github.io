@@ -497,6 +497,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/stickytitles</li>
 
+<li>0.ROS建置與安裝</li>
+
 <li>1.安裝與建立</li>
 
 <li>1.Nano與他的電力供應</li>
@@ -592,6 +594,8 @@ Error message and password prompt
 <li>溫溼度感測</li>
 
 <li>鉚釘的種類與使用時機</li>
+
+<li>語音系統：選擇google的原因</li>
 
 <li>寫的短=寫得好？</li>
 
@@ -14038,7 +14042,7 @@ very-muted-foreground: #888888</pre>
 <div created="20191218063234807" creator="ckshadow" modified="20191218063234807" modifier="ckshadow" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20191218065643348" creator="ckshadow" modified="20200220020334395" modifier="ckshadow" title="$:/state/sidebar">
+<div created="20191218065643348" creator="ckshadow" modified="20200401013354872" modifier="ckshadow" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/state/tab--1498284803">
@@ -14158,7 +14162,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200331082156098" creator="ckshadow" list="5.發佈與訂閱（下）_ROS2 4.發佈與訂閱（上）_ROS2 關於我們" modified="20200331082215001" modifier="ckshadow" title="$:/StoryList">
+<div created="20200401011351176" creator="ckshadow" list="語音系統：選擇google的原因 機器人作業系統（ROS） 0.ROS建置與安裝 1.ROS基本介紹 關於我們" modified="20200401014205473" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15122,6 +15126,46 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 </div>
 <div created="20191218072632626" creator="ckshadow" modified="20191218072633762" modifier="ckshadow" title="$:/themes/tiddlywiki/vanilla/options/stickytitles">
 <pre>no</pre>
+</div>
+<div created="20200401011355001" creator="ckshadow" modified="20200401013236569" modifier="ckshadow" tags="機器人作業系統（ROS）" title="0.ROS建置與安裝">
+<pre>因應許多人在ROS安裝上遇到困難，因此我們在這邊會稍稍解說一下樹梅派上ROS的安裝過程。
+
+首先，安裝ROS1.0的時候要注意有可能因為mercurial這個包的導向錯誤，因而一直裝不上去，因此建議不論他有沒有問題都先嘗試修復一下：
+
+```python
+cd /var/lib/dpkg/
+sudo mv info/ info_bak
+sudo mkdir info
+sudo apt-get update
+sudo apt-get -f install
+sudo mv info/* info_bak/
+sudo rm -rf info
+sudo mv info_bak info
+sudo apt-get install mercurial 
+```
+
+修復完之後，大致上就可以跟隨官方網站的原始碼安裝方法進行了：
+
+https://wiki.ros.org/melodic/Installation/Source
+
+此方法會複製ROS的原始碼，編譯之後安裝，因此時間會稍長一點，請耐心一步一步地做。
+
+安裝過程中請隨時注意自己的工作目錄正不正確，看到跳紅字第一個先檢查目錄。
+
+另外一個比較需要注意的是最後面的安裝指令
+
+```python
+./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release
+```
+
+這步驟接近最後了，由於我們安裝的是melodic，因此官方表示應該改成這樣：
+
+```python
+sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/melodic -j2
+```
+注意最後尾我們加了個j2，指定他只用兩個核心跑。雖然不見得每一片樹莓派都會發生，但本教阿在安裝3片中有2片，不加上j2安裝時會莫名的卡死......當成都市傳說保險一下吧。
+
+安裝完之後，關閉終端機之後重新開啟，輸入roscore之後，如果沒有錯誤訊息，恭喜，你已經跨過安裝ROS這個最大的門檻了。</pre>
 </div>
 <div created="20191230033327966" creator="ckshadow" modified="20200327052347951" modifier="ckshadow" tags="DonkeyCar" title="1.安裝與建立">
 <pre>Donkey Car安裝原文參考
@@ -16408,6 +16452,25 @@ lxterminal --command=&quot;剛剛你中意的地方/start.sh&quot;
 [img[https://i.imgur.com/OP0rWpg.png]]
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ujsP-6ryRUo&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+</div>
+<div created="20200401014207780" creator="ckshadow" modified="20200401020859681" modifier="ckshadow" tags="智慧機器人" title="語音系統：選擇google的原因">
+<pre>最近看到有人拿出Sphinx這個系統來做文章，也因此讓本教阿又被詢問為何不用這個系統。
+
+如果有人參加過2年前本教阿主講的課程，應該有聽過我選擇語音系統的原因。當然，時過已久想必也被遺忘了，因此在這邊留下當時的分析和結果。
+
+說到語音辨識，一定要提及卡內基梅隆大學的李開復先生。他實現了第一個基於隱馬爾科夫模型的大詞彙量語音辨識系統開發的一組語音識別系統Sphinx，其中包括一系列語音識別器和聲學模型訓練器。
+
+而一般用在嵌入式系統的是他的輕量版：PocketSphinx，大致上跟原版功能差不多。
+
+Sphinx系統本身並不依賴網路，單純依靠聲音波形轉換成聲元（可以想像成某種羅馬拼音）方式，再去比對連續聲元所對應的詞，選出最有可能的文字－－這產生一個問題是，對有聲韻的語言效果欠佳，對，就是在說中文。
+
+不精確的辨識產生一個問題：試想，平常我們跟人交代事情，講兩次就有可能覺得煩了，面對辨識不精確的中文，我們可能要數倍的次數才能觸發成功。以一個系統而言，感覺是很糟糕的。
+
+而我們當然想用中文來做為我們系統的主語言，因此我們才選擇用一點時間來換更精準的結果。google最終成為我們的選擇－－而且其實在這兩年間，我們也看到google持續維護的力度，辨識的精確度穩步的在增長。更重要的是，他免費且廣為人知。因此，基本上若網路沒有疑慮，本教阿大多都使用google系統；如果是離網環境，又想用關鍵詞觸發，那比起Sphinx，還不如用喚醒類的系統來取代。
+
+另外有些事情是別人發測試文章的時候不會告訴你的－－Sphinx對雜訊干擾比較敏感，多人說話的時候即使有分遠近，也會讓辨識歪掉。但google在複雜環境依然有一定辨識能力，搭配上收音好的陣列麥克風，這點就更明顯了。
+
+......所以大多數測試都會在安靜環境這種實務上很不務實的地方進行。</pre>
 </div>
 <div created="20190903061725015" creator="ckshadow" modified="20190905032216549" modifier="ckshadow" tags="Python學堂" title="寫的短=寫得好？">
 <pre>原版：
