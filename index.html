@@ -257,6 +257,10 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents/Arduino/感測器-溫溼度感測--118161433</li>
 
+<li>$:/state/toc/TableOfContents/NVidia Jetson Nano-機器人作業系統（ROS）--118161433</li>
+
+<li>$:/state/toc/TableOfContents/NVidia Jetson Nano-機器人作業系統2.0（ROS2.0）--118161433</li>
+
 <li>$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433</li>
 
 <li>$:/state/toc/TableOfContents/NVidia Jetson Nano-NV實戰測試--118161433</li>
@@ -14146,6 +14150,12 @@ very-muted-foreground: #888888</pre>
 <div created="20200219092346190" creator="ckshadow" modified="20200219092346190" modifier="ckshadow" title="$:/state/toc/TableOfContents/Arduino/感測器-溫溼度感測--118161433">
 <pre>open</pre>
 </div>
+<div created="20200424023408383" creator="ckshadow" modified="20200424023646631" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-機器人作業系統（ROS）--118161433">
+<pre>close</pre>
+</div>
+<div created="20200424023410759" creator="ckshadow" modified="20200424023652023" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-機器人作業系統2.0（ROS2.0）--118161433">
+<pre>open</pre>
+</div>
 <div created="20191230091559985" creator="ckshadow" modified="20200409092951204" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433">
 <pre>close</pre>
 </div>
@@ -14155,10 +14165,10 @@ very-muted-foreground: #888888</pre>
 <div created="20191227014141907" creator="ckshadow" modified="20200417010615870" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-系統技巧--118161433">
 <pre>close</pre>
 </div>
-<div created="20200220080920049" creator="ckshadow" modified="20200409092944292" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-機器人作業系統（ROS）--118161433">
+<div created="20200220080920049" creator="ckshadow" modified="20200424023352343" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-機器人作業系統（ROS）--118161433">
 <pre>close</pre>
 </div>
-<div created="20200327062347914" creator="ckshadow" modified="20200409092944988" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-機器人作業系統2.0（ROS2.0）--118161433">
+<div created="20200327062347914" creator="ckshadow" modified="20200424023327319" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-機器人作業系統2.0（ROS2.0）--118161433">
 <pre>close</pre>
 </div>
 <div created="20190902071207457" creator="ckshadow" modified="20200417010614510" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-擴充板--118161433">
@@ -14173,7 +14183,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200417003201730" creator="ckshadow" list="關於我們" modified="20200417003201730" modifier="ckshadow" title="$:/StoryList">
+<div created="20200424023332912" creator="ckshadow" list="關於我們" modified="20200424023414983" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15138,10 +15148,12 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20191218072632626" creator="ckshadow" modified="20191218072633762" modifier="ckshadow" title="$:/themes/tiddlywiki/vanilla/options/stickytitles">
 <pre>no</pre>
 </div>
-<div created="20200401011355001" creator="ckshadow" modified="20200401013236569" modifier="ckshadow" tags="機器人作業系統（ROS）" title="0.ROS建置與安裝">
-<pre>因應許多人在ROS安裝上遇到困難，因此我們在這邊會稍稍解說一下樹梅派上ROS的安裝過程。
+<div created="20200401011355001" creator="ckshadow" modified="20200424023636488" modifier="ckshadow" tags="機器人作業系統（ROS）" title="0.ROS建置與安裝">
+<pre>因應許多人在ROS安裝上遇到困難，因此我們在這邊會稍稍解說一下ROS的安裝過程。
 
-首先，安裝ROS1.0的時候要注意有可能因為mercurial這個包的導向錯誤，因而一直裝不上去，因此建議不論他有沒有問題都先嘗試修復一下：
+首先，樹莓派上安裝ROS1.0不能直接使用apt安裝，必須從原始碼編譯安裝。
+
+安裝的時候要注意有可能因為mercurial這個包的導向錯誤，因而一直裝不上去，因此建議不論他有沒有問題都先嘗試修復一下：
 
 ```python
 cd /var/lib/dpkg/
@@ -15176,7 +15188,11 @@ sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release 
 ```
 注意最後尾我們加了個j2，指定他只用兩個核心跑。雖然不見得每一片樹莓派都會發生，但本教阿在安裝3片中有2片，不加上j2安裝時會莫名的卡死......當成都市傳說保險一下吧。
 
-安裝完之後，關閉終端機之後重新開啟，輸入roscore之後，如果沒有錯誤訊息，恭喜，你已經跨過安裝ROS這個最大的門檻了。</pre>
+安裝完之後，關閉終端機之後重新開啟，輸入roscore之後，如果沒有錯誤訊息，恭喜，你已經跨過安裝ROS這個最大的門檻了。
+
+---
+
+至於Ubuntu請安心使用apt安裝，官方網站的流程在虛擬機Ubuntu / NVidia Jetson Nano皆證實可使用</pre>
 </div>
 <div created="20191230033327966" creator="ckshadow" modified="20200327052347951" modifier="ckshadow" tags="DonkeyCar" title="1.安裝與建立">
 <pre>Donkey Car安裝原文參考
@@ -16732,10 +16748,10 @@ Q4.可以裝ROS嗎？
 
 A4.樹莓派的raspbian不能直接裝ROS，必須採用源碼編譯的方式安裝－－從這觀點來看，可以。</pre>
 </div>
-<div created="20200220080519685" creator="ckshadow" modified="20200220080542755" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="機器人作業系統（ROS）">
+<div created="20200220080519685" creator="ckshadow" modified="20200424023359791" modifier="ckshadow" tags="[[NVidia Jetson Nano]] [[Raspberry Pi 3B+/4B]]" title="機器人作業系統（ROS）">
 <pre></pre>
 </div>
-<div created="20200327055643235" creator="ckshadow" modified="20200327055654089" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="機器人作業系統2.0（ROS2.0）">
+<div created="20200327055643235" creator="ckshadow" modified="20200424023346528" modifier="ckshadow" tags="[[NVidia Jetson Nano]] [[Raspberry Pi 3B+/4B]]" title="機器人作業系統2.0（ROS2.0）">
 <pre></pre>
 </div>
 <div created="20191125004817841" creator="ckshadow" modified="20200106010857408" modifier="ckshadow" tags="競賽專區" title="歷史軌跡">
