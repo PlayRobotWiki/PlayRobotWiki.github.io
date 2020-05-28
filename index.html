@@ -14136,8 +14136,8 @@ very-muted-foreground: #888888</pre>
 <div created="20200327055422179" creator="ckshadow" modified="20200417010618718" modifier="ckshadow" title="$:/state/toc/TableOfContents/自製產品-3D立體教材系列--118161433">
 <pre>close</pre>
 </div>
-<div created="20190905032341778" creator="ckshadow" modified="20200409092937820" modifier="ckshadow" title="$:/state/toc/TableOfContents/自製產品-智慧機器人--118161433">
-<pre>close</pre>
+<div created="20190905032341778" creator="ckshadow" modified="20200528085918307" modifier="ckshadow" title="$:/state/toc/TableOfContents/自製產品-智慧機器人--118161433">
+<pre>open</pre>
 </div>
 <div created="20190925024151369" creator="ckshadow" modified="20200327055610968" modifier="ckshadow" title="$:/state/toc/TableOfContents/競賽專區-影像辨識競賽--118161433">
 <pre>close</pre>
@@ -14166,8 +14166,8 @@ very-muted-foreground: #888888</pre>
 <div created="20200424023408383" creator="ckshadow" modified="20200526053424776" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-機器人作業系統（ROS）--118161433">
 <pre>open</pre>
 </div>
-<div created="20200424023410759" creator="ckshadow" modified="20200507074831407" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-機器人作業系統2.0（ROS2.0）--118161433">
-<pre>close</pre>
+<div created="20200424023410759" creator="ckshadow" modified="20200528090022298" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-機器人作業系統2.0（ROS2.0）--118161433">
+<pre>open</pre>
 </div>
 <div created="20191230091559985" creator="ckshadow" modified="20200409092951204" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433">
 <pre>close</pre>
@@ -14196,7 +14196,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200526053420929" creator="ckshadow" list="關於我們" modified="20200526054844081" modifier="ckshadow" title="$:/StoryList">
+<div created="20200528085920627" creator="ckshadow" list="" modified="20200528092227187" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -16342,8 +16342,42 @@ class Human:
 
 物件導向屬於程式的一種抽象化概念，也就是把原本很具體的東西變得很不具體（X）。我們會稍微多花一點篇幅來介紹這個近代程式語言最重要的概念之一，下一期我們將會討論所謂的「方法」</pre>
 </div>
-<div created="20200513013633079" creator="ckshadow" modified="20200513013643549" modifier="ckshadow" tags="Python學堂" title="物件導向（下）">
-<pre>施工中</pre>
+<div created="20200513013633079" creator="ckshadow" modified="20200528093905212" modifier="ckshadow" tags="Python學堂" title="物件導向（下）">
+<pre>在類別中，有一些python保留的關鍵字（通常會以雙底線開頭結尾），這些關鍵字通常是某些特殊的場合會自動觸發該方法。我們來小小介紹一些比較常用的特殊方法：
+
+```python
+class samples:
+    def __init__():
+        &quot;&quot;&quot;這個方法在物件被實例化的時候被執行，有一個別名叫做初始化&quot;&quot;&quot;
+
+    def __repr__():
+        &quot;&quot;&quot;這個方法可以覆寫「物件的標準輸出」，其回傳值必須是字串。白話的來說，就是當你print(samples)的時候會呼叫這個方法&quot;&quot;&quot;
+
+    def __add__():
+        &quot;&quot;&quot;看英文就可以想像，當你兩個物件用加號連結時，會呼叫這個方法。而這個方法也被稱作運算子重載－－當然，有加法自然減、乘、除都可以重載。&quot;&quot;&quot;
+
+    def __getitem__():
+        &quot;&quot;&quot;我們在使用串列時，會使用[]來取得特定元素的值－－而這就是由這個方法定義的。&quot;&quot;&quot;
+
+    def __iter__():
+        &quot;&quot;&quot;當我們用for迴圈遍歷串列時，就是這個方法在循環丟出資料的。而這方法搭配的關鍵字是yield，和生成器會有關係。&quot;&quot;&quot;
+```
+
+一般而言，我們最常用到的就是init了－－前面的小明也有使用過。小心的使用這些特殊方法，可以在很多狀況下讓你的物件更靈活。
+
+前面講了一些特殊的方法，後面我們來談談對於物件導向很重要的一個特性－－繼承。
+
+我們假設，現在我們想製造一個新類別，它代表了新一代的特殊人類。而這種特殊人類和人類的大部分屬性和方法都相同，此時我們可以使用繼承，來避免重複撰寫那些屬性和方法：
+
+```python
+class NewHuman(Human):
+    def __init__(self):
+        super.__init__()
+```
+
+我們注意到，class後多了括號，指向的是我們在物件導向（上）中定義的Human類別。這種寫法就代表我們這個新人類的類別繼承了人類的特性－－可以從__base__中檢查到這一點。
+
+而底下的init使用了super這個關鍵字，宣告我要使用繼承而來的類別的方法，這邊使用了原本的初始化。</pre>
 </div>
 <div created="20200513005431459" creator="ckshadow" modified="20200513012811801" modifier="ckshadow" tags="Python學堂" title="物件導向（中）">
 <pre>上一堂課，我們依據wiki的詞條逐項說明了物件導向的一些基本特性－－而那大多聚焦在屬性這件事情上面。這一堂課我們會開始講解物件導向的另外一個重要特性：方法。
