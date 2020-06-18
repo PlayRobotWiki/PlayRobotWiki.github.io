@@ -689,6 +689,8 @@ Error message and password prompt
 
 <li>Respeaker mic array v2</li>
 
+<li>RPi4_8GB版本評測</li>
+
 <li>TableOfContents</li>
 
 <li>UNO</li>
@@ -9917,8 +9919,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;&lt;html&gt;\r\n&lt;body&gt;\r\n&lt;!--StartFragment--&gt;&lt;pre style=\&quot;box-sizing: border-box; overflow: auto; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 16px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(249, 249, 249); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;code style=\&quot;box-sizing: border-box; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;\&quot;&gt;playrobotAICar&lt;/code&gt;&lt;/pre&gt;&lt;!--EndFragment--&gt;\r\n&lt;/body&gt;\r\n&lt;/html&gt;&quot;,
-            &quot;type&quot;: &quot;text/html&quot;
+            &quot;text&quot;: &quot;新條目&quot;
         }
     }
 }</pre>
@@ -14198,7 +14199,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200612053524041" creator="ckshadow" list="關於我們" modified="20200612053524041" modifier="ckshadow" title="$:/StoryList">
+<div created="20200618034008106" creator="ckshadow" list="RPi4_8GB版本評測 關於我們" modified="20200618034008106" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -17997,6 +17998,62 @@ pixel_ring.trace()
 開啟DOA模式，注意這個函式實測時他會變更wakeup的角度，不推薦直接使用。
 
 *注意：有關V2的函式必須以sudo權限執行</pre>
+</div>
+<div created="20200618034010236" creator="ckshadow" modified="20200618034719370" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="RPi4_8GB版本評測">
+<pre>時逢樹莓派出8GB版本，雖然由於貨源不足資料暫時偏少，但本鳥有幸先拿到一片做測試。就在這個時候，看到了底下這一篇評測，便決定結合一下自己使用的經驗，評論一下這篇評測和分析一下大家做評測時容易犯的錯誤。
+
+[img[https://www.raspberrypi.org/homepage-9df4b/static/raspberry-pi-4-labelled@2x-c1a040c7511610e7274e388432a458c4.png]]
+
+這篇評測：用RPi4B_8G取代MacBookPro的一天
+
+https://www.jeffgeerling.com/blog/2020/i-replaced-my-macbook-pro-raspberry-pi-4-8gb-day
+
+
+!! 價位陷阱
+我們先把標題翻譯一次，這次改成他們的價格：
+
+''用2800台幣取代42000台幣的一天''
+
+......改成用價格看之後會不會覺得這測試瘋了（X
+
+評測時會發生的第一件常見問題是，用一個起點完全不同的東西去比較，然後過度低估該物品的價值和能力。幸好，本篇作者最後有提及，Pi4的價格（包含螢幕等等外部設備加總）相較於一般筆記型電腦和MacBook具有一定競爭力。
+
+&gt;雖然本鳥認為&quot;一定競爭力&quot;真是謙虛了......組5組這種小電腦系統可能還買不起mac
+
+而在本鳥的觀點，Pi4的性價比無疑是非常高的。由於工作需求，雖然本鳥的主系統是windows，但大多數測試都得在linux系統上面進行。虛擬機雖然能夠承擔一部分工作，然而硬體類的測試不太可能在虛擬機上進行－－這時候一個良好的、只需要2800台幣的測試平台還不夠好嗎？
+
+而4GB版本偶爾會遇到的編譯資源耗盡問題和網頁切換延遲問題因為記憶體的餘裕加大，略為改善一點。考慮到和4GB版本的價格差異不大，這應該算是相當划算的升級。
+
+&gt;If your use of the computer is more oriented towards the browser, a code editor, and the command line (e.g. backend web development, infrastructure development, writing/blogging, and the like), the Pi is perfectly adequate, and with 8GB of RAM, Chromium runs just fine, even if you have a bunch of tabs open. With a Flirc case, it's also silent.
+
+本鳥也這麼認為，尤其是裝的是ubuntu server的時候。
+
+!! 功能陷阱
+眾所周知的事實是，mac本身聚集了很多頂尖開發人員，為mac做了很多相當&quot;黑科技&quot;等級的應用。作者表示他從Mac切換到Pi4......應該說是linux系統上經歷了非常沮喪的過程。但其實，對長期用windows的人－－而這或許是使用電腦的絕大多數－－切換到mac上面也會經歷一段令人沮喪的時間。
+
+而這就是評測時容易發生的第二個問題－－拿自己用大半輩子的東西，去批評一個拿到手幾天的新東西。
+
+事實上，大多數的學習者是沒辦法負擔Mac的42000高價的，而Mac也不適合拿來部屬到嵌入式裝置上面。以現今最常看到的業界OS，絕大多數還是linux類的系統，這點對於樹莓派是決定性的優勢。而8GB意味著系統有更多餘裕去跑更多東西，64位元的系統（雖然很遺憾的Raspberry OS還沒有正式版本的64位元）打破了單程序使用的記憶體上限，可以容忍更耗資源的系統。
+
+&gt;理論上，樹莓派的arm晶片架構可以定址到16GB的記憶體。
+
+!! 情境陷阱
+作者本身評測時針對了非常多的影片編輯、社群經營等等方面做出說明，而這就是評測時常發生的第三個問題－－以一個相同的情境去評測設計階段就是不同面向的東西。
+
+眾所周知的ios是一個封閉的環境。雖然由於封閉，他對自己硬體的支援高到了天際，但對於常常需要調整或者改裝的創客或教育課程來說就不會是最優先的選擇－－也就是說，如果今天本鳥以教育者的角度來看，也可以寫出一篇mac非常難用且難以自訂的評測出來（而且還超貴）。
+
+就結果來看，本鳥認為RPi是新手創客入門或是學生在學期間學習的優秀平台，且8GB的誕生使得64位元的特性能更好的在嵌入式裝置上呈現。而對於最終產出是一些影音檔或者是非程式檔的業界人士來說，mac可以讓他們有更好的編輯環境。
+
+!! 結論
+&gt;So, in summary, would I recommend the Pi 4 as a worthy general computer for anyone? Definitely no. Would I recommend it as a worthy general computer for a certain subset of computer users. Definitely yes!
+
+本鳥稍微節錄一下他的結論，作者認為Pi4並不適合所有用戶拿來取代一般電腦，但對於作為某些子電腦系統是相當適合的。
+
+本鳥完全同意這結論。單板電腦本身由於硬體限制，本來就難以和一般桌機或筆記型電腦競爭硬效能。但做為學習或者是嵌入式的子系統，則有難以撼動的價格/性能優勢。
+
+而在4GB時，其實許多大型任務（比如說編譯安裝）很容易讓記憶體不足，使得系統使用swap在虛擬記憶體做讀寫。這個動作會大幅拖慢那些大型任務，更充裕的記憶體解決了這個問題。如果未來有需要自己撰寫大型應用，那麼高記憶體的版本或許會是一個最佳選擇。
+
+......雖然本鳥真的沒遇過幾次整片資源吃光的大型任務就是。</pre>
 </div>
 <div caption="目錄" created="20190902070118483" creator="ckshadow" list-after="$:/core/ui/SideBar/Open" modified="20200106010732898" modifier="ckshadow" tags="$:/tags/SideBar" title="TableOfContents">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
