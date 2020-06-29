@@ -217,6 +217,8 @@ Error message and password prompt
 
 <li>$:/state/toc/自製產品-智慧機器人--1194924689</li>
 
+<li>$:/state/toc/開發板-YUN-345002311</li>
+
 <li>$:/state/toc/Arduino-開發板--532123245</li>
 
 <li>$:/state/toc/TableOfContents-自製產品--118161433</li>
@@ -633,6 +635,8 @@ Error message and password prompt
 
 <li>擴充板</li>
 
+<li>舊YUN版更新步驟</li>
+
 <li>寵物系統介面</li>
 
 <li>關心您的樹莓派</li>
@@ -698,6 +702,8 @@ Error message and password prompt
 <li>TableOfContents</li>
 
 <li>UNO</li>
+
+<li>YUN</li>
 
 </ul>
 </p>
@@ -14107,6 +14113,9 @@ very-muted-foreground: #888888</pre>
 <div created="20200106010751744" creator="ckshadow" modified="20200106010753664" modifier="ckshadow" title="$:/state/toc/自製產品-智慧機器人--1194924689">
 <pre>close</pre>
 </div>
+<div created="20200629082234948" creator="ckshadow" modified="20200629082234948" modifier="ckshadow" title="$:/state/toc/開發板-YUN-345002311">
+<pre>open</pre>
+</div>
 <div created="20200507083025932" creator="ckshadow" modified="20200507083025932" modifier="ckshadow" title="$:/state/toc/Arduino-開發板--532123245">
 <pre>open</pre>
 </div>
@@ -14125,8 +14134,8 @@ very-muted-foreground: #888888</pre>
 <div created="20190924010648759" creator="ckshadow" modified="20200622014933919" modifier="ckshadow" title="$:/state/toc/TableOfContents-競賽專區--118161433">
 <pre>close</pre>
 </div>
-<div created="20190902070449546" creator="ckshadow" modified="20200622014931223" modifier="ckshadow" title="$:/state/toc/TableOfContents-Arduino--118161433">
-<pre>close</pre>
+<div created="20190902070449546" creator="ckshadow" modified="20200629081821277" modifier="ckshadow" title="$:/state/toc/TableOfContents-Arduino--118161433">
+<pre>open</pre>
 </div>
 <div created="20200106010631432" creator="ckshadow" modified="20200622014932719" modifier="ckshadow" title="$:/state/toc/TableOfContents-Microbit--118161433">
 <pre>close</pre>
@@ -14206,7 +14215,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200622014848072" creator="ckshadow" list="關於我們" modified="20200622014955240" modifier="ckshadow" title="$:/StoryList">
+<div created="20200629081823944" creator="ckshadow" list="舊YUN版更新步驟 關於我們" modified="20200629082207447" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -17088,6 +17097,63 @@ A4.樹莓派的raspbian不能直接裝ROS，必須採用源碼編譯的方式安
 
 &lt;/div&gt;</pre>
 </div>
+<div created="20200629081838295" creator="ckshadow" modified="20200629083335038" modifier="ckshadow" tags="YUN" title="舊YUN版更新步驟">
+<pre>!!! ''1、按照此鏈接''
+
+https://www.arduino.cc/en/Guide/YunUpdater
+
+下載適用於作業系統的更新文件，下列操作以Windows為例，解壓縮後得到一個名為windows的資料夾。
+
+[img[https://i.imgur.com/TECUbuE.jpg]]
+
+!!! ''2、以WINDOWS 10為例，關閉電腦防火牆。''
+
+[img[https://i.imgur.com/wD1kcSq.jpg]]
+
+!!! ''3、用MICRO USB線將YUN板連接到電腦，用網路線將YUN板連接到可上網的ROUTER，並等待開機完成。''
+
+&lt;span style=&quot;color:red&quot;&gt;注意：YUN板不能用WIFI做重新刷新，和電腦必須連接到同一個ROUTER。&lt;/span&gt;
+
+!!! ''4、確認電腦有偵測到YUN板。''
+
+[img[https://i.imgur.com/esaKkO8.jpg]]
+
+!!! ''5、使用軟體PuTTy連接YUN板，並確認YUN板目前IP與電腦是相同網段後，關掉PUTTY。''
+
+[img[https://i.imgur.com/c8CQqzh.jpg]]
+
+[img[https://i.imgur.com/1WWrKw9.jpg]]
+
+[img[https://i.imgur.com/eAkGpwZ.jpg]]
+
+!!! ''6、開啟windows資料夾，以系統管理員身份執行yun-go-updater.exe。''
+
+[img[https://i.imgur.com/ALhfGLb.jpg]]
+
+!!! ''7、輸入Y後按下Enter，開始自動刷新。''
+
+[img[https://i.imgur.com/AN0Bm7S.jpg]]
+
+!!! ''8、當出現Reboot the board using YUN RST button訊息時，按下YUN RST按鈕開始自動刷新，完成後視窗會自動關閉。''
+
+[img[https://i.imgur.com/8Mov0QI.jpg]]
+
+[img[https://i.imgur.com/f9SZFQz.jpg]]
+
+!!! ''9、用PuTTy確認YUN板是否更新完成，完成後可以看到OpenWRT 已更新到17.11或更高的版本。''
+
+[img[https://i.imgur.com/LEIRDOn.jpg]]
+
+!!! ''10、輸入ifconfig確認目前IP。''
+
+[img[https://i.imgur.com/w58mnOu.jpg]]
+
+!!! ''11、開啟瀏覽器，輸入YUN板IP，確認是否可正常進入設定畫面。''
+
+[img[https://i.imgur.com/f5KXLEh.jpg]]
+
+!!! ''12、恭喜你已更新完成，記得要把電腦的防火牆開啟。''</pre>
+</div>
 <div created="20190905032322837" creator="ckshadow" modified="20190906010907291" modifier="ckshadow" tags="智慧機器人" title="寵物系統介面">
 <pre>[img[https://i.imgur.com/pUUVTjq.png]]
 
@@ -18162,6 +18228,9 @@ https://www.jeffgeerling.com/blog/2020/i-replaced-my-macbook-pro-raspberry-pi-4-
 </div>
 <div created="20190902070459803" modified="20190902070643701" tags="開發板" title="UNO">
 <pre>測試用子條目之二</pre>
+</div>
+<div created="20200629081831888" creator="ckshadow" modified="20200629081835573" modifier="ckshadow" tags="開發板" title="YUN">
+<pre></pre>
 </div>
 
 </div>
