@@ -597,6 +597,8 @@ Error message and password prompt
 
 <li>氣體感測</li>
 
+<li>軟體界常見協議一覽</li>
+
 <li>創客版AIoT智能音箱</li>
 
 <li>智慧音箱介面</li>
@@ -14215,7 +14217,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200629081823944" creator="ckshadow" list="舊YUN版更新步驟 關於我們" modified="20200629082207447" modifier="ckshadow" title="$:/StoryList">
+<div created="20200701003702627" creator="ckshadow" list="關於我們" modified="20200701003702627" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -16621,6 +16623,70 @@ python的字典映射機制帶來了一些額外好處，尤其是我們需要�
 </div>
 <div created="20190902070708491" modified="20190902070714298" tags="感測器" title="氣體感測">
 <pre></pre>
+</div>
+<div created="20200701003704838" creator="ckshadow" modified="20200701004230299" modifier="ckshadow" tags="Python學堂" title="軟體界常見協議一覽">
+<pre>! 軟體界常見協議一覽
+軟體界有很多常用的協議，開源和閉源協議皆有。而每種協議都有它的特色和限制，在開發產品時需要多加注意。這邊分析了一下常見開源協議，以及它們的特性和限制。
+
+首先先來看一張比較簡單的分類圖，這張圖主要是針對會變更原始碼的部分－－我們在後面會說明，有一個協議會因為不變更原始碼而可以轉成閉源。
+
+[img[https://i.imgur.com/MIFDxRb.jpg]]
+
+!! 常見協議一覽
+# GPL
+# LGPL
+# Mozilla
+# BSD
+# MIT
+# Apache
+
+!!! GPL
+流氓。有四大自由標準必須遵守
+
+# 基於任何目的，按你的意願執行軟體的自由。
+# 學習軟體如何工作的自由，按你的意願修改軟體以符合你的計算的自由。可存取原始碼是此項自由的先決條件。
+# 分發軟體副本的自由。
+# 將你修改過的軟體版本再分發給其他人的自由。這樣可以讓整個社區有機會共享你對軟體的改動。可存取原始碼是此項自由的先決條件。
+
+&lt;span style=&quot;color:red&quot;&gt;強迫完全開源，只要沾到GPL就全滅&lt;/span&gt;
+
+
+!!! LGPL
+GNU較寬鬆公共授權條款（英語：GNU Lesser General Public License，簡稱：LGPL）是由自由軟體基金會公布的自由軟體授權條款。
+
+它允許企業與軟體開發者使用，或將LGPL授權的軟體整合至他們自己的軟體內（即使該軟體是私有軟體也被允許）
+
+&lt;span style=&quot;color:red&quot;&gt;屬於&quot;可商用但不可變更原始碼的協議&quot;&lt;/span&gt;
+比GPL（完全強迫開源）緩和一點，不強迫開源其他授權的檔案。
+
+!!! Mozilla Public License
+MPL允許在其授權下的原始碼與其他授權的檔案進行混合，包括私有授權條款。但在MPL授權下的代碼檔案必須保持MPL授權，並且保持開源。
+
+&lt;span style=&quot;color:red&quot;&gt;比GPL（完全強迫開源）緩和一點，不強迫開源其他授權的檔案。&lt;/span&gt;
+
+!!! BSD
+遵守BSD License的軟體，允許用作商業用途，甚至可按照專屬授權條款進行再釋出。
+
+&lt;span style=&quot;color:red&quot;&gt;所有從以BSD授權條款授權的軟體衍生著作，都必須要包含一段文字（滿長的，這邊容許我不貼上）以交代原始碼的來源。
+符合以上要求的時候就可以商業運用。&lt;/span&gt;
+
+!!! MIT
+&gt;被授權人有權利使用、複製、修改、合併、出版發行、散布、再授權和/或販售軟體及軟體的副本，及授予被供應人同等權利，惟服從以下義務。
+
+在軟體和軟體的所有副本中都必須包含以上著作權聲明和MIT的許可聲明。
+
+此授權條款並非屬copyleft的自由軟體授權條款，允許在自由及開放原始碼軟體或非自由軟體（proprietary software）所使用。
+
+&lt;span style=&quot;color:red&quot;&gt;必填的版權宣告比BSD少，其餘差不多。&lt;/span&gt;
+
+!!! Apache
+Apache不會強制衍生和修改產物使用相同的授權條款進行釋出（與一些著作權授權條款不同）。
+
+但它仍然要求對所有未修改的部分應用相同的授權條款，並且在每個授權檔案中，必須保留再分發代碼中的任何原始著作權，專利，商標和歸屬通知（不需要包括任何部分的衍生作品）;並且在每個更改的授權檔案中，都必須添加一條通知，說明對該檔案進行了更改。
+
+&lt;span style=&quot;color:red&quot;&gt;一種比較特殊的，可更動原始碼但必須說明的可商業用條款授權。&lt;/span&gt;
+
+若以後各為有機會開發自己的產品時，都要小心注意自己是不是有使用到不可商用的協議，否則可能產生著作權上面的問題喔！</pre>
 </div>
 <div created="20190905032132925" creator="ckshadow" modified="20190926031004006" modifier="ckshadow" tags="自製產品" title="創客版AIoT智能音箱">
 <pre>[img[https://i.imgur.com/5HiBw8Y.png]]
