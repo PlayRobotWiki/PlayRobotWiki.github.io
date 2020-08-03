@@ -621,6 +621,8 @@ Error message and password prompt
 
 <li>鉚釘的種類與使用時機</li>
 
+<li>電腦就是這樣子解決問題的</li>
+
 <li>語音系統：選擇google的原因</li>
 
 <li>寫的短=寫得好？</li>
@@ -14157,7 +14159,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190903063020075" creator="ckshadow" modified="20190903063020076" modifier="ckshadow" title="$:/state/toc/TableOfContents-python學堂--118161433">
 <pre>open</pre>
 </div>
-<div created="20190905032218274" creator="ckshadow" modified="20200710022810557" modifier="ckshadow" title="$:/state/toc/TableOfContents-Python學堂--118161433">
+<div created="20190905032218274" creator="ckshadow" modified="20200803072048758" modifier="ckshadow" title="$:/state/toc/TableOfContents-Python學堂--118161433">
 <pre>close</pre>
 </div>
 <div created="20190902070744017" creator="ckshadow" modified="20200710022603564" modifier="ckshadow" title="$:/state/toc/TableOfContents-Raspberry Pi 3B+/4B--118161433">
@@ -14226,7 +14228,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200710013145893" creator="ckshadow" list="關於我們" modified="20200710022743469" modifier="ckshadow" title="$:/StoryList">
+<div created="20200803062024456" creator="ckshadow" list="" modified="20200803063729663" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -16909,6 +16911,57 @@ world
 [img[https://i.imgur.com/OP0rWpg.png]]
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ujsP-6ryRUo&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;</pre>
+</div>
+<div created="20200803063732195" creator="ckshadow" modified="20200803071839767" modifier="ckshadow" tags="Python學堂" title="電腦就是這樣子解決問題的">
+<pre>在小學（？），剛學好乘除法的時候，有些比較菁英的老師會拿類似這種題目給學生做：
+
+&gt;趣味數學 x 學 = 學數味趣。其中每個字分別代表一個不同數字，請找出符合這個題目的數字各是多少。
+
+如果我們用正攻法來思考這個題目的話......大概會走以下步驟：
+
+1. 因為數字不同且不重複，因此幾乎可以肯定 趣 x 學 = 學，趣 = 1
+
+2. 假設趣=1，則因為學 x 學的尾數必須 = 1，因此只有1和9兩種選擇，由於不重複，學 = 9
+
+3. 1ab9 x 9 = 9ba1，又a x 9不可進位，因此只能為0
+
+4.經過一點討論之後可以認定b為8，正確式子為1089 x 9 = 9801
+
+但我們不太可能把這種推理過程寫成程式......一方面是每一個題目都有不同推理流程，很難固定化；另一方面則是即使真的存在推理流程，也不見得適合程式化。
+
+因此電腦就會用一種很暴力的作法：窮舉！
+
+```python
+from itertools import permutations
+
+def numgen(Tuple,Order):
+    genNum = ''
+    for i in Order:genNum += str(Tuple[i])
+    return int(genNum)
+
+def check(Tuple):
+    num1 = numgen(Tuple,[0,1,2,3])
+    num2 = numgen(Tuple,[3])
+    num3 = numgen(Tuple,[3,2,1,0])
+    return num1*num2 == num3
+
+for p in permutations(range(0,10),4):
+    if check(p):
+        print(p)
+
+--------------
+out：(1, 0, 8, 9)
+```
+
+itertools是python的一個生成函式庫，主要可以幫你找出一個集合中的排列、組合、重複排列等等，需要窮舉出來的資料。
+
+而我們這邊用的就是排列，將一堆元素不重複的排列出來，接著就是暴力乘法，把每一種結果都相乘一次找出答案。
+
+這個動作讓人類來做非常瘋狂，但電腦基本上跑不到一秒鐘而已。從程式碼來看並不是非常複雜，比起花老半天寫類似[[寫的短=寫得好？]]這類的簡短卻複雜的程式碼，得到結果的時間是差很多的。
+
+程式，終究只是個工具，如果時間要求足夠，當然可以花點時間研究優美（但可能超難維護）的寫法；但如果交期都在眼前了，當然是有什麼用什麼－－而且往往直覺寫出來的東西不見得後來會覺得不好。
+
+by 在某次上課時聽到同學報告快交不出來，火都燒到屁股了還在選方法，無言以對的教阿</pre>
 </div>
 <div created="20200401014207780" creator="ckshadow" modified="20200401020859681" modifier="ckshadow" tags="智慧機器人" title="語音系統：選擇google的原因">
 <pre>最近看到有人拿出Sphinx這個系統來做文章，也因此讓本教阿又被詢問為何不用這個系統。
