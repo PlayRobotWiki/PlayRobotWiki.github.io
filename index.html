@@ -557,6 +557,8 @@ Error message and password prompt
 
 <li>5.Nano與他的終端機</li>
 
+<li>6.常用命令_ROS2</li>
+
 <li>6.Nano與他的Python</li>
 
 <li>7.Nano與他的GPIO_LED</li>
@@ -14228,7 +14230,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200804092954923" creator="ckshadow" list="$:/ControlPanel 關於我們" modified="20200804092954923" modifier="ckshadow" title="$:/StoryList">
+<div created="20200818071912287" creator="ckshadow" list="關於我們" modified="20200818071912287" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15847,6 +15849,44 @@ ROS1.0中，還是以函式的方式呼叫，因此使用rospy.spin()指令維�
 [img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-2.jpg]]
 
 [img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的終端機-3.jpg]]</pre>
+</div>
+<div created="20200818071918351" creator="ckshadow" modified="20200818072626093" modifier="ckshadow" tags="機器人作業系統2.0（ROS2.0）" title="6.常用命令_ROS2">
+<pre>在ROS中有一些好用的指令工具，可以幫助我們在測試階段更快速的檢查結果或測試，我們在這邊介紹一些比較常用的工具指令和細節參數。
+
+```
+ros2 topic
+```
+
+有關發佈和訂閱的測試都可以透過這指令進行，可能是撰寫節點時最常使用到的指令區了。
+
+!!! 檢查topic列表：
+
+```
+ros2 topic list
+```
+
+這個命令可以列出目前區域中所有被建立的topic名稱，其中有兩個一定會出現的：rosout（就是[info]的輸出者）和parameter（ROS的參數主題）。
+
+!!!監聽某個主題的訊息：
+
+```
+ros2 topic echo /主題名稱
+```
+
+在前面我們有應用過一次，這次完整介紹一次。echo之後輸入/主題名稱，就可以監聽特定主題的訊息。注意這個指令不會創立主題，因此若該主題不存在則會返回錯誤訊息。
+
+!!!對某個主題發佈訊息：
+
+```
+ros2 topic pub (--once) /主題名稱 訊息類別 &quot;data: 訊息內容&quot;
+```
+
+發佈就複雜許多了，在pub後面接主題名稱，接著可以加入（或不加入）--once參數來發佈一次（或連續發佈）。然後指定訊息類別。ROS的訊息類別千奇百怪，一般來說用這個指令都只會用基本訊息（複雜的也很難輸入），最常用的大概就是std_msgs/String，字串類別。
+後面則是由雙引號包覆的data|訊息內容，這邊特別注意冒號後面一定要空一格。舉個例子，如果我們要對test主題發佈hello訊息：
+
+```
+ros2 topic pub --once /test std_msgs/String &quot;data: hello&quot;
+```</pre>
 </div>
 <div created="20200303070152061" creator="ckshadow" modified="20200309013351041" modifier="ckshadow" tags="NV實戰測試" title="6.Nano與他的Python">
 <pre>[img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的Python-1.jpg]]
