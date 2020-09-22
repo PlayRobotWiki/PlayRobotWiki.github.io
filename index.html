@@ -679,6 +679,10 @@ Error message and password prompt
 
 <li>DonkeyCar</li>
 
+<li>ESP32</li>
+
+<li>ESP32簡介</li>
+
 <li>Flask</li>
 
 <li>Flask簡介</li>
@@ -14125,7 +14129,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902070116257" creator="ckshadow" modified="20190903060050031" modifier="ckshadow" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20190902070111626" creator="ckshadow" modified="20200710013648140" modifier="ckshadow" title="$:/state/tab/sidebar--595412856">
+<div created="20190902070111626" creator="ckshadow" modified="20200922004742781" modifier="ckshadow" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
 <div created="20200106010751744" creator="ckshadow" modified="20200106010753664" modifier="ckshadow" title="$:/state/toc/自製產品-智慧機器人--1194924689">
@@ -14155,11 +14159,11 @@ very-muted-foreground: #888888</pre>
 <div created="20200710022602964" creator="ckshadow" modified="20200828055429852" modifier="ckshadow" title="$:/state/toc/TableOfContents-AI專區--118161433">
 <pre>close</pre>
 </div>
-<div created="20190902070449546" creator="ckshadow" modified="20200827004002128" modifier="ckshadow" title="$:/state/toc/TableOfContents-Arduino--118161433">
-<pre>open</pre>
+<div created="20190902070449546" creator="ckshadow" modified="20200922004717550" modifier="ckshadow" title="$:/state/toc/TableOfContents-Arduino--118161433">
+<pre>close</pre>
 </div>
-<div created="20200106010631432" creator="ckshadow" modified="20200828055425660" modifier="ckshadow" title="$:/state/toc/TableOfContents-Microbit--118161433">
-<pre>open</pre>
+<div created="20200106010631432" creator="ckshadow" modified="20200922004718582" modifier="ckshadow" title="$:/state/toc/TableOfContents-Microbit--118161433">
+<pre>close</pre>
 </div>
 <div created="20190905003457032" creator="ckshadow" modified="20200828055426444" modifier="ckshadow" title="$:/state/toc/TableOfContents-NVidia Jetson Nano--118161433">
 <pre>close</pre>
@@ -14239,7 +14243,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div list="關於我們" title="$:/StoryList">
+<div created="20200922004722639" creator="ckshadow" list="ESP32簡介 關於我們" modified="20200922083913800" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -17687,6 +17691,41 @@ colab在這一點上有絕對的自由度，Teachable machine則是限定的模�
 &lt;&lt;toc-selective-expandable 'DonkeyCar'&gt;&gt;
 
 &lt;/div&gt;</pre>
+</div>
+<div created="20200922004727954" creator="ckshadow" modified="20200922083919817" modifier="ckshadow" tags="TableOfContents" title="ESP32">
+<pre></pre>
+</div>
+<div created="20200922004749394" creator="ckshadow" modified="20200922083919819" modifier="ckshadow" tags="ESP32" title="ESP32簡介">
+<pre>by 維基百科
+
+&gt;ESP32是一系列低成本，低功耗的單晶片微控制器，整合了Wi-Fi和雙模藍牙。 ESP32系列採用Tensilica Xtensa LX6微處理器，包括雙核心和單核變體，內建天線開關，RF變換器，功率放大器，低雜訊接收放大器，濾波器和電源管理模組。
+
+以往使用Arduino UNO的時候，若想使用wifi或藍芽等物聯網通訊，都必須外接其他通訊模組。
+
+於是，ESP8266應運而生，ESP8266一樣採用Arduino開放性架構，呼叫內建的ESP8266 WiFi.h函式庫就可以連上網路讀取資料，因此ESP8266曾經風靡一陣子。但後來發現ESP8266只有一組類比腳位，如果使用時需要使用到一組以上類比感測器時，ESP8266就無能為力了。
+
+於是後來ESP32出現。ESP32內建了這兩種主要的通訊，並且腳位幾乎都同時支援類比和數位，使得開發微型的物聯網套件變得簡單方便，且價格低廉。
+
+三種主板的比較如下：
+
+| |Arduino|ESP8266|ESP32|
+|核心數|1|1|2|
+|燒錄空間|32KB|1~4MB|4~32MB|
+|GPIO|13|8|18|
+|類比腳位|8|1|18（與GPIO共用）|
+|PWM|6|8|16|
+|類比輸出解析度|1023|1023|4095|
+|I2C|1|1|2|
+|SPI|1|1|3|
+|Wifi|X|O|O|
+|藍牙|X|X|O|
+
+雖然看起來ESP32是完勝的，但和Arduino相比還是有一些問題。其中之一是ESP32本身只能吃3.3V的輸入電壓，因此許多的感測器必須挑選過。（但輸出可以使用5V）
+
+ESP32有眾多版本，各自有一些特性（比方說加裝了相機之類？），而本鳥目前著手使用的則是Node-mcu 32s系列，使用起來和Arduino
+差異真的不大，若想設計更多網路類的應用，且已經會寫Arduino的話，ESP32或許是一個比外接網路模組更好的選擇。
+
+至於本鳥為什麼突然踩入ESP32的原因，會在接下來的一系列專欄中慢慢揭曉。</pre>
 </div>
 <div created="20200409092350951" creator="ckshadow" modified="20200409092356829" modifier="ckshadow" tags="[[Raspberry Pi 3B+/4B]]" title="Flask">
 <pre></pre>
