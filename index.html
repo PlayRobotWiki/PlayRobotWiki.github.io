@@ -235,6 +235,8 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents-Arduino--118161433</li>
 
+<li>$:/state/toc/TableOfContents-C/C++學堂--118161433</li>
+
 <li>$:/state/toc/TableOfContents-ESP32--118161433</li>
 
 <li>$:/state/toc/TableOfContents-Microbit--118161433</li>
@@ -517,6 +519,8 @@ Error message and password prompt
 
 <li>0.ROS建置與安裝</li>
 
+<li>01.C語言簡介</li>
+
 <li>1.安裝與建立</li>
 
 <li>1.Nano與他的電力供應</li>
@@ -674,6 +678,8 @@ Error message and password prompt
 <li>Arduino上傳燒錄故障排除</li>
 
 <li>Arduino是什麼?</li>
+
+<li>C/C++學堂</li>
 
 <li>ckshadow</li>
 
@@ -14164,6 +14170,9 @@ very-muted-foreground: #888888</pre>
 <div created="20190902070449546" creator="ckshadow" modified="20200922004717550" modifier="ckshadow" title="$:/state/toc/TableOfContents-Arduino--118161433">
 <pre>close</pre>
 </div>
+<div created="20200924015134104" creator="ckshadow" modified="20200924015134104" modifier="ckshadow" title="$:/state/toc/TableOfContents-C/C++學堂--118161433">
+<pre>open</pre>
+</div>
 <div created="20200922084237800" creator="ckshadow" modified="20200922084237800" modifier="ckshadow" title="$:/state/toc/TableOfContents-ESP32--118161433">
 <pre>open</pre>
 </div>
@@ -14176,8 +14185,8 @@ very-muted-foreground: #888888</pre>
 <div created="20190903063020075" creator="ckshadow" modified="20190903063020076" modifier="ckshadow" title="$:/state/toc/TableOfContents-python學堂--118161433">
 <pre>open</pre>
 </div>
-<div created="20190905032218274" creator="ckshadow" modified="20200828055422076" modifier="ckshadow" title="$:/state/toc/TableOfContents-Python學堂--118161433">
-<pre>close</pre>
+<div created="20190905032218274" creator="ckshadow" modified="20200924011050429" modifier="ckshadow" title="$:/state/toc/TableOfContents-Python學堂--118161433">
+<pre>open</pre>
 </div>
 <div created="20190902070744017" creator="ckshadow" modified="20200828055420436" modifier="ckshadow" title="$:/state/toc/TableOfContents-Raspberry Pi 3B+/4B--118161433">
 <pre>close</pre>
@@ -14248,7 +14257,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200922084238457" creator="ckshadow" list="ESP32簡介 關於我們" modified="20200922084238457" modifier="ckshadow" title="$:/StoryList">
+<div created="20200924010946262" creator="ckshadow" list="關於我們" modified="20200924015134607" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15258,6 +15267,52 @@ sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release 
 ---
 
 至於Ubuntu請安心使用apt安裝，官方網站的流程在虛擬機Ubuntu / NVidia Jetson Nano皆證實可使用</pre>
+</div>
+<div created="20200924011045351" creator="ckshadow" modified="20200924015142192" modifier="ckshadow" tags="C/C++學堂" title="01.C語言簡介">
+<pre>&gt;維基百科 : C是一種通用的程式語言，廣泛用於系統軟體與應用軟體的開發。於1969年至1973年間，為了移植與開發UNIX作業系統，由丹尼斯·里奇與肯·湯普遜，以B語言為基礎，在貝爾實驗室設計、開發出來。
+
+C語言可能是目前程式設計中影響力最大的幾個語言之一了，他不只到現在都還有相當程度的活躍性，還影響了後面許多大型語言的發展。C++、C#、
+Java、JavaScript、Objective-C、Perl、PHP等語言都可以看到一點C的影子。
+
+對於學生來說，C可能也是他人生中第一個碰到的正式程式課程。C的格式嚴謹，且包含許多程式人員需要知道的底層操作。即使目前python相當盛行，也已經有學校把第一語言改為python，C還是保有它底層操作的特性，難以被完全取代。
+
+學習C時要注意的主要特性有幾個，我們從一個最簡單的hello world範例談起：
+
+```C
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    printf(&quot;Hello, world!\n&quot;);
+    return 0;
+}
+```
+
+include，包含。後面的程式語言通常都稱這個動作叫引用，是重複應用別人寫好的功能的重要動作。
+
+int，函式（或變數）的型別宣告。C屬於強型別語言，使用所有變數或函式都必須先經過宣告。
+
+main，C的程式執行起點。一個正常的C程式都應該要有一個int main，否則編譯器無法判斷程式從何處開始執行。
+
+main(void)，代表main這個函式不接受參數。
+
+{ }，C的複合語句表示。代表大括號內的所有內容皆屬於前面所宣言的函式或條件式。
+
+printf()，C的函式呼叫。不論是使用別人的或者是自己寫的，函式都是程式的重要組成部分。
+
+&quot;hello world\n&quot;，C的字串。在C之中字串和字元必須使用&quot; &quot; 和 ' '區別（很多高階語言已經沒有字元型別了）。
+
+' ; '，代表程式語句的結束。
+
+return，回傳。函式只要不是void型別，則都應該有回傳值，代表函式執行的結果。
+
+......看起來好像沒這麼簡單？
+
+確實，和python等高階語言相比，C是比較沒這麼直覺的。但扎實的學好C可以讓你學習其他語言速度變快，也因此即使後面大量語言出現，C依然還是在教學的第一線上。
+
+接下來，我們將推出一系列的教學，來仔細講講這個古老－－甚至可能持續活躍相當久的語言，C。
+
+</pre>
 </div>
 <div created="20191230033327966" creator="ckshadow" modified="20200327052347951" modifier="ckshadow" tags="DonkeyCar" title="1.安裝與建立">
 <pre>Donkey Car安裝原文參考
@@ -17631,6 +17686,9 @@ Arduino開發IDE介面基於開放原始碼（open source），可以讓您免�
 &lt;span align=&quot;center&quot;&gt;Arduino 官網首頁畫面（https://www.arduino.cc/）&lt;/span&gt;
 [img[https://i.imgur.com/WYa1q2K.png]]</pre>
 </div>
+<div created="20200924011016352" creator="ckshadow" modified="20200924011042509" modifier="ckshadow" tags="TableOfContents" title="C/C++學堂">
+<pre></pre>
+</div>
 <div created="20191231070018060" creator="ckshadow" modified="20200313071255531" modifier="ckshadow" title="ckshadow">
 <pre>&lt;span style=&quot;background: linear-gradient(#FFFFFF, #FF0000);-webkit-background-clip: text;color: transparent; font-size:32pt&quot;;&gt;&lt;b&gt;有病的軟體工程師&lt;/b&gt;&lt;/span&gt;
 
@@ -17700,10 +17758,8 @@ colab在這一點上有絕對的自由度，Teachable machine則是限定的模�
 <div created="20200922004727954" creator="ckshadow" modified="20200922083919817" modifier="ckshadow" tags="TableOfContents" title="ESP32">
 <pre></pre>
 </div>
-<div created="20200922004749394" creator="ckshadow" modified="20200922084348609" modifier="ckshadow" tags="ESP32" title="ESP32簡介">
-<pre>by 維基百科
-
-&gt;ESP32是一系列低成本，低功耗的單晶片微控制器，整合了Wi-Fi和雙模藍牙。 ESP32系列採用Tensilica Xtensa LX6微處理器，包括雙核心和單核變體，內建天線開關，RF變換器，功率放大器，低雜訊接收放大器，濾波器和電源管理模組。
+<div created="20200922004749394" creator="ckshadow" modified="20200924015129264" modifier="ckshadow" tags="ESP32" title="ESP32簡介">
+<pre>&gt;維基百科：ESP32是一系列低成本，低功耗的單晶片微控制器，整合了Wi-Fi和雙模藍牙。 ESP32系列採用Tensilica Xtensa LX6微處理器，包括雙核心和單核變體，內建天線開關，RF變換器，功率放大器，低雜訊接收放大器，濾波器和電源管理模組。
 
 以往使用Arduino UNO的時候，若想使用wifi或藍芽等物聯網通訊，都必須外接其他通訊模組。
 
