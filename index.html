@@ -541,6 +541,8 @@ Error message and password prompt
 
 <li>20191123_台北城市科大熱身賽</li>
 
+<li>2020國慶紀念：進位制小雜學</li>
+
 <li>3.非標準自走車控制</li>
 
 <li>3.Nano與他的環境建置</li>
@@ -14178,10 +14180,10 @@ very-muted-foreground: #888888</pre>
 <div created="20200922084237800" creator="ckshadow" modified="20200922084237800" modifier="ckshadow" title="$:/state/toc/TableOfContents-ESP32--118161433">
 <pre>open</pre>
 </div>
-<div created="20200106010631432" creator="ckshadow" modified="20200922004718582" modifier="ckshadow" title="$:/state/toc/TableOfContents-Microbit--118161433">
+<div created="20200106010631432" creator="ckshadow" modified="20201008081019295" modifier="ckshadow" title="$:/state/toc/TableOfContents-Microbit--118161433">
 <pre>close</pre>
 </div>
-<div created="20190905003457032" creator="ckshadow" modified="20200828055426444" modifier="ckshadow" title="$:/state/toc/TableOfContents-NVidia Jetson Nano--118161433">
+<div created="20190905003457032" creator="ckshadow" modified="20201008081020335" modifier="ckshadow" title="$:/state/toc/TableOfContents-NVidia Jetson Nano--118161433">
 <pre>close</pre>
 </div>
 <div created="20190903063020075" creator="ckshadow" modified="20190903063020076" modifier="ckshadow" title="$:/state/toc/TableOfContents-python學堂--118161433">
@@ -14259,7 +14261,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20200930070032765" creator="ckshadow" list="關於我們" modified="20200930070055724" modifier="ckshadow" title="$:/StoryList">
+<div created="20201008081022784" creator="ckshadow" list="C/C++學堂 2020國慶紀念：進位制小雜學 關於我們" modified="20201008081022784" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15611,6 +15613,39 @@ sudo apt install lxde
 第三名的北城令人驚豔的是有最快的行駛速度，我想一部分是因為C++的速度上還是略為優於python，因此可以有餘裕繼續提升速度，但遺憾的是辨識成功次數都差一個......如果辨識穩定度更高一些，想必就會是無庸置疑的第一名。
 
 最後在15組中，有三組達成4個圖樣完全辨識成功（也就是第一名一組和第二名的兩組），有兩組3個圖樣辨識成功（皆為北城隊伍）。有成功行駛完賽道且有辨識到圖樣的有7組，實際上完賽的隊伍是居多數的。</pre>
+</div>
+<div created="20201008081025267" creator="ckshadow" modified="20201008084044890" modifier="ckshadow" tags="C/C++學堂" title="2020國慶紀念：進位制小雜學">
+<pre>20201010，是一年一度的國慶日。
+
+本鳥在看到這個數字的同時，想起了以前在學時期的一些趣事，因此特別撰寫此文。
+
+首先，我們先從1010看起。
+
+眾所周知的是，電腦採取的是二進位制，所有的資料型態都是以1和0儲存而成的。而這個儲存方法帶來了一些優勢：對四則運算的快速，以及儲存上的便利性。四則運算我想可以想像，因為只有1和0，所有計算都只需要簡單的比對和進位就可以解決了；而儲存便利主要則是來自於電子學上大多都是開閉雙狀態，因此這種進位方式非常符合電路設計。
+
+......當然也帶來一些缺點，詳情請看[[二進制的浮點數，是個坑]]。
+
+而在哲學上，0和1也是所謂的從無到有的歷程。第一個為二進制撰寫論文的戈特弗里德·萊布尼茨，據說也是看見了易經的卦象，進而影響他設計了近代的二進位記數系統。（此說法來自維基百科）
+
+而二進位真正被大量應用的，除了電腦之外就是以前的電報了。相信稍微接觸過歷史的人都會有印象，以往通信是使用二進制的摩斯密碼電報。這種機制學習簡單，且收發機器可以用很簡易的方式完成－－我們在playpython這份教材中也用了這個範例。
+
+至於這跟本鳥在學的趣事有什麼關係呢？
+
+在本鳥還是國一生的時候，數學老師出了這麼一個問題：
+
+&gt;如果想利用天平，量出從1到31克重的物體，需要準備幾種砝碼？
+
+這個問題當初大家都直覺地想到，顯然是使用二進制的1 2 4 8 16，也就是五顆砝碼這個答案。實際上，考卷的標準答案也是這個，而本鳥第一時間當然也是這麼寫的。
+
+然而在重新審視這個問題的時候，本鳥發現不太對勁。我們在實驗室使用天平的時候根本不會只在一邊放砝碼，而是哪邊輕往哪邊丟砝碼，意思是二進制的五顆並不會是最少解。
+
+考慮一下這個題目若變成左右皆能放，則狀態變為左、右以及沒放這三種，因此應該是使用三進制的1 3 9 27，為四顆。......至於最後本鳥寫上了4顆這個答案，因為答案的正確性和導師激烈的爭吵後讓大家扣分又是另外一回事了。
+
+這裡使用到的進位法是所謂的平衡三進制，為-1 0 +1三種狀態表達而成的進位法（-1為了書寫方便，會寫為T這個字母）。
+
+平衡三進制曾經被認為是最優美的進位法。它沒有正負號問題，四則運算和二進制接近，儲存空間優於二進制。實際上，蘇聯曾經打造過平衡三進制的電腦，並表示其對科學運算比二進制更具有優勢－－然而最後還是因為硬體實現上成本過高，留在我們面前的就是成本贏家的二進制電腦了。
+
+一般的三進制則是使用0 1 2，也就是20201010的這種表示方式，也就是本鳥撰文的目標日期（？）。在這個數字很特別的日子，和大家分享一下小雜學，並祝各位連假愉快。</pre>
 </div>
 <div created="20191227014451860" creator="ckshadow" modified="20200327052405135" modifier="ckshadow" tags="DonkeyCar" title="3.非標準自走車控制">
 <pre>我們上一節在[[標準PCA9685控制]]中討論了怎麼把DonkeyCar架上由PCA9685作為主控制器的車，現在我們來討論一下不是PCA9685的狀況
