@@ -523,6 +523,8 @@ Error message and password prompt
 
 <li>02.資料型態</li>
 
+<li>03.輸入輸出</li>
+
 <li>1.安裝與建立</li>
 
 <li>1.Nano與他的電力供應</li>
@@ -14261,7 +14263,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20201008081022784" creator="ckshadow" list="C/C++學堂 2020國慶紀念：進位制小雜學 關於我們" modified="20201008081022784" modifier="ckshadow" title="$:/StoryList">
+<div created="20201016033318123" creator="ckshadow" list="關於我們" modified="20201016034845729" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -15318,7 +15320,7 @@ return，回傳。函式只要不是void型別，則都應該有回傳值，代�
 
 </pre>
 </div>
-<div created="20200930070058087" creator="ckshadow" modified="20200930071443485" modifier="ckshadow" tags="C/C++學堂" title="02.資料型態">
+<div created="20200930070058087" creator="ckshadow" modified="20201016051344712" modifier="ckshadow" tags="C/C++學堂" title="02.資料型態">
 <pre>在程式語言中，我們會很需要用到一些數據，或者是需要一個可以記憶數據（或文字等其他資料）的東西。這種東西我們通稱為變數，也就是可以變更的數據。而以此為延伸，定義了儲存各種數據的資料型態、不能變更的數據等。
 
 C 的基本資料型態主要區分為整數（Integer）、浮點數（Float）、字元（Character），基於這些產生了一些衍伸：
@@ -15344,6 +15346,74 @@ bool雖然看起來是獨立一種型別，但實際上使用時跟char是一模
 
 ESP32和Arduino中由於混合了部分C++的特性，因此是可以使用String型的，但要注意兩者可以使用的方法並不共通。比方說String可以使用+號連接，char[]不行；部分的函式庫只吃String等等......
 </pre>
+</div>
+<div created="20201016034847396" creator="ckshadow" modified="20201016054011337" modifier="ckshadow" tags="C/C++學堂" title="03.輸入輸出" type="">
+<pre>學習C的時候，最常見的做法是從命令列對程式進行輸入輸出，因此一般的C教材會使用stdio這個函式庫：
+
+```C
+#include &lt;stdio.h&gt;
+```
+
+而在Arduino和ESP32上，由於我們都是連接USB進行程式的燒錄，所以會使用serial來讀取資料：
+
+```C
+void setup()
+{
+  Serial.begin(115200);
+}
+```
+
+使用serial讀取時會選擇兩個函式：read和readString。前者會一個一個字元的讀入，回傳是字元。後者則是會讀到換行字元為準，回傳一個字串。（若遺忘了這些變數類別，請參考[[02.資料型態]]）。
+
+serial的讀取也是和其他裝置結合的重要方案，許多結合方案（比方說與樹莓派、一般電腦結合）都會依賴serial接收訊息以執行特定動作。
+
+反過來，若我們想輸出數據的時候，也有兩個選擇：print和println。前者會將資料從Arduino/ESP32透過序列埠送回電腦端，此方法不含換行字元，因此輸出時會黏在一起：
+
+```C
+void setup()
+{
+  Serial.begin(115200);
+}
+
+void loop()
+{
+  for(int i=0;i&lt;10;i++)
+  {
+    serial.print(i)
+  }
+}
+--------------------------
+123456789
+```
+
+若使用的是println，則會額外輸出換行符號：
+
+```C
+void setup()
+{
+  Serial.begin(115200);
+}
+
+void loop()
+{
+  for(int i=0;i&lt;10;i++)
+  {
+    serial.println(i)
+  }
+}
+--------------------------
+1
+2
+3
+4
+5
+6
+7
+8
+9
+```
+
+這兩個方法沒有一定的好壞，端看個人習慣使用，而除了將資料回送其他設備外，適當的在程式中加入這些輸出也可以幫助除錯。</pre>
 </div>
 <div created="20191230033327966" creator="ckshadow" modified="20200327052347951" modifier="ckshadow" tags="DonkeyCar" title="1.安裝與建立">
 <pre>Donkey Car安裝原文參考
