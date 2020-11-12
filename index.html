@@ -579,6 +579,8 @@ Error message and password prompt
 
 <li>8.Nano與他的GPIO_按鈕開關</li>
 
+<li>9.What！我的PS2無線手把壞了嗎？</li>
+
 <li>一種快速應用AI辨識的方法</li>
 
 <li>七吋觸控螢幕組裝與設定</li>
@@ -14181,14 +14183,14 @@ very-muted-foreground: #888888</pre>
 <div created="20200924015134104" creator="ckshadow" modified="20201023072915770" modifier="ckshadow" title="$:/state/toc/TableOfContents-C/C++學堂--118161433">
 <pre>close</pre>
 </div>
-<div created="20200922084237800" creator="ckshadow" modified="20200922084237800" modifier="ckshadow" title="$:/state/toc/TableOfContents-ESP32--118161433">
-<pre>open</pre>
-</div>
-<div created="20200106010631432" creator="ckshadow" modified="20201023071749507" modifier="ckshadow" title="$:/state/toc/TableOfContents-Microbit--118161433">
-<pre>open</pre>
-</div>
-<div created="20190905003457032" creator="ckshadow" modified="20201023072642995" modifier="ckshadow" title="$:/state/toc/TableOfContents-NVidia Jetson Nano--118161433">
+<div created="20200922084237800" creator="ckshadow" modified="20201112011543165" modifier="ckshadow" title="$:/state/toc/TableOfContents-ESP32--118161433">
 <pre>close</pre>
+</div>
+<div created="20200106010631432" creator="ckshadow" modified="20201112011543812" modifier="ckshadow" title="$:/state/toc/TableOfContents-Microbit--118161433">
+<pre>close</pre>
+</div>
+<div created="20190905003457032" creator="ckshadow" modified="20201112010329045" modifier="ckshadow" title="$:/state/toc/TableOfContents-NVidia Jetson Nano--118161433">
+<pre>open</pre>
 </div>
 <div created="20190903063020075" creator="ckshadow" modified="20190903063020076" modifier="ckshadow" title="$:/state/toc/TableOfContents-python學堂--118161433">
 <pre>open</pre>
@@ -14241,8 +14243,8 @@ very-muted-foreground: #888888</pre>
 <div created="20191230091559985" creator="ckshadow" modified="20200710022716956" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-DonkeyCar--118161433">
 <pre>close</pre>
 </div>
-<div created="20191230091755650" creator="ckshadow" modified="20200409092951820" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-NV實戰測試--118161433">
-<pre>close</pre>
+<div created="20191230091755650" creator="ckshadow" modified="20201112010330685" modifier="ckshadow" title="$:/state/toc/TableOfContents/NVidia Jetson Nano-NV實戰測試--118161433">
+<pre>open</pre>
 </div>
 <div created="20191227014141907" creator="ckshadow" modified="20200827003850343" modifier="ckshadow" title="$:/state/toc/TableOfContents/Raspberry Pi 3B+/4B-系統技巧--118161433">
 <pre>open</pre>
@@ -14265,7 +14267,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20201023071750179" creator="ckshadow" list="關於我們" modified="20201023072715155" modifier="ckshadow" title="$:/StoryList">
+<div created="20201112010537264" creator="ckshadow" list="NV實戰測試 9.What！我的PS2無線手把壞了嗎？ 關於我們" modified="20201112010541580" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -16127,6 +16129,43 @@ ros2 topic pub --once /test std_msgs/String &quot;data: hello&quot;
 [img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-3.jpg]]
 
 [img[http://www.playrobot.com/robotpress/wp-content/uploads/2020/02/Nano與他的GPIO_按鈕開關-5.jpg]]</pre>
+</div>
+<div created="20201112010547106" creator="ckshadow" modified="20201112011459727" modifier="ckshadow" tags="NV實戰測試" title="9.What！我的PS2無線手把壞了嗎？">
+<pre>很多人會拿PS2無線手把來控制自己手邊的Jetson nano小車、樹莓派小車、Arduino 小車等等，既好玩又方便。
+
+最近拿到一支PS2無線手把，一如往常的裝上電池，開啟開關配對－－沒反應，心想大概是電池沒電吧？換一組新電池再試一次……還是沒反應，What！我的PS2無線手把壞了嗎？
+
+花了一些時間找問題的原因並記錄下來，分享給大家。
+之前使用的PS2無線手把，在開機未配對時，狀態燈是呈現4個LED燈閃爍：
+
+[img[https://i.imgur.com/kpx8Jvm.jpg]]
+
+在開機配對後，狀態燈是呈現1個LED恆亮：
+
+[img[https://i.imgur.com/PUnJhG5.jpg]]
+
+---
+
+最近拿到的PS2無線手把，在開機未配對時，狀態燈是呈現2個LED燈閃爍。（OS：4個LED變2個LED閃爍也沒什麼差吧？）
+
+[img[https://i.imgur.com/B8EHfz3.jpg]]
+
+
+在開機配對後，狀態燈呈現熄滅。第一次看到時心想應該是沒電，換了兩個新電池後重新開機，狀態燈還是熄滅，當場嚇傻不知所措。
+
+[img[https://i.imgur.com/D7DYVC5.jpg]]
+
+---
+
+經過一段時間的測試比對，原來這款PS2無線手把在配對後，狀態燈會呈現熄滅，並且處在類似待機或休眠的狀態。
+
+拿出手邊的NV智慧小車 (NVIDIA Jetson Nano)，插上無線接收器，打開PS2無線手把開關，並執行Donkey car程式來測試手把功能。
+
+[img[https://i.imgur.com/Us5AhWn.jpg]]
+
+第一次執行Donkey car程式時手把被喚醒，此時狀態燈是呈現1個LED恆亮，但是沒有辦法操控，關掉程式並重新執行Donkey car程式後，終於可以用手把操控車子了，原來這款手把有一個特別的地方，在第一次使用時會做類似喚醒的動作，之後只要接收器不斷電，都可以正常使用。
+
+[img[https://i.imgur.com/8ndIFgB.jpg]]</pre>
 </div>
 <div created="20200828053631146" creator="ckshadow" modified="20201023072047732" modifier="ckshadow" tags="Microbit" title="一種快速應用AI辨識的方法">
 <pre>AI應用常見於電腦、手機、微電腦等裝置，但要在micro：bit 、 Arduino等微控制器執行AI運算是不可行。但HuskyLens視覺辨識模組是一款易於使用的裝置，具有6種內置功能：面部識別，對象跟踪，對象識別，線條追踪，顏色檢測和標籤檢測。
