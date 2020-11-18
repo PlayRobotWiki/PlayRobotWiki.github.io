@@ -725,6 +725,8 @@ Error message and password prompt
 
 <li>playrobot函式庫介紹（機器人類）</li>
 
+<li>pygame的小技巧_音訊播放</li>
+
 <li>python之「禪」</li>
 
 <li>python的過載</li>
@@ -14176,7 +14178,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190924010648759" creator="ckshadow" modified="20201023072707563" modifier="ckshadow" title="$:/state/toc/TableOfContents-競賽專區--118161433">
 <pre>close</pre>
 </div>
-<div created="20200710022602964" creator="ckshadow" modified="20201023072709227" modifier="ckshadow" title="$:/state/toc/TableOfContents-AI專區--118161433">
+<div created="20200710022602964" creator="ckshadow" modified="20201118034047697" modifier="ckshadow" title="$:/state/toc/TableOfContents-AI專區--118161433">
 <pre>close</pre>
 </div>
 <div created="20190902070449546" creator="ckshadow" modified="20201023072713115" modifier="ckshadow" title="$:/state/toc/TableOfContents-Arduino--118161433">
@@ -14269,7 +14271,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20201112073040727" creator="ckshadow" list="關於我們" modified="20201112073040727" modifier="ckshadow" title="$:/StoryList">
+<div created="20201118030805917" creator="ckshadow" list="關於我們" modified="20201118030823604" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -18390,6 +18392,44 @@ channel有四個位置：0,1,14,15，請參考板子右側之PWM/Servo腳位。
 pulse值為正整數，以我們小車連接的馬達其區間為
 
 1300（倒轉）&lt;==1500（靜止）==&gt;1700（前轉）。</pre>
+</div>
+<div created="20201118030827151" creator="ckshadow" modified="20201118034038666" modifier="ckshadow" tags="Python學堂" title="pygame的小技巧_音訊播放">
+<pre>我們很常使用pygame功能來做一些語音類的功能－－最有可能的就是我們在TTS中使用的播放聲音功能上。
+
+一個使用pygame播放音訊的程式如下
+
+```python
+from pygame import mixer
+
+mixer.init()
+mixer.music.load('音訊檔.mp3')
+mixer.music.play()
+
+#此行可加可不加，端看是否需要等待音訊播放完成再進行程式
+while mixer.music.get_busy() ==True:continue
+```
+
+但使用這個方法播放，偶爾會發生音訊檔走音的狀況－－明明直接用播放器放正常，但用程式卻變尖變快等狀況。
+
+[img[https://i.imgur.com/NtmoLaI.png]]
+
+原因是出在，pygame本身預設的播放方法，只會鎖死32Kbps的位元速率。因此它用錯誤的位元速率去播放音訊檔，就會有聲音改變的狀況。
+
+要解決這個問題，其中一個方案就是在init的時候指定位元速率
+
+```python
+from pygame import mixer
+
+mixer.init(128000)
+mixer.music.load('音訊檔.mp3')
+mixer.music.play()
+
+...
+```
+
+注意：位元速率是kbps，而init吃的是bps，因此記得自己補上三個0。當然這個數字是依照檔案的位元速率而定，不是永遠可以寫死這數值喔！
+
+加上之後聲音就會正常了。</pre>
 </div>
 <div created="20190905063855790" creator="ckshadow" modified="20190905064202819" modifier="ckshadow" tags="Python學堂" title="python之「禪」">
 <pre>這次，我們來討論一下Python的設計哲學。
