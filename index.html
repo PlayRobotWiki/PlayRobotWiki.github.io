@@ -718,6 +718,8 @@ Error message and password prompt
 
 <li>Flask簡介</li>
 
+<li>IFTTT簡介</li>
+
 <li>Mega2560</li>
 
 <li>Microbit</li>
@@ -14200,14 +14202,14 @@ very-muted-foreground: #888888</pre>
 <div created="20200710022602964" creator="ckshadow" modified="20201118034047697" modifier="ckshadow" title="$:/state/toc/TableOfContents-AI專區--118161433">
 <pre>close</pre>
 </div>
-<div created="20190902070449546" creator="ckshadow" modified="20201119005755640" modifier="ckshadow" title="$:/state/toc/TableOfContents-Arduino--118161433">
-<pre>open</pre>
+<div created="20190902070449546" creator="ckshadow" modified="20201217015307492" modifier="ckshadow" title="$:/state/toc/TableOfContents-Arduino--118161433">
+<pre>close</pre>
 </div>
 <div created="20200924015134104" creator="ckshadow" modified="20201023072915770" modifier="ckshadow" title="$:/state/toc/TableOfContents-C/C++學堂--118161433">
 <pre>close</pre>
 </div>
-<div created="20200922084237800" creator="ckshadow" modified="20201112011543165" modifier="ckshadow" title="$:/state/toc/TableOfContents-ESP32--118161433">
-<pre>close</pre>
+<div created="20200922084237800" creator="ckshadow" modified="20201217010703945" modifier="ckshadow" title="$:/state/toc/TableOfContents-ESP32--118161433">
+<pre>open</pre>
 </div>
 <div created="20200106010631432" creator="ckshadow" modified="20201112011543812" modifier="ckshadow" title="$:/state/toc/TableOfContents-Microbit--118161433">
 <pre>close</pre>
@@ -14296,7 +14298,7 @@ very-muted-foreground: #888888</pre>
 <div created="20190902071420981" creator="c" modified="20190902071422190" modifier="ckshado" title="$:/status/UserName">
 <pre>ckshadow</pre>
 </div>
-<div created="20201203011119450" creator="ckshadow" list="關於我們" modified="20201203012201736" modifier="ckshadow" title="$:/StoryList">
+<div created="20201217010706689" creator="ckshadow" list="IFTTT簡介 關於我們" modified="20201217010706689" modifier="ckshadow" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190902071432337" creator="ckshadow" modified="20190902071432337" modifier="ckshadow" title="$:/temp/advancedsearch">
@@ -18054,6 +18056,43 @@ https://www.playrobot.com/nodemcu-esp8266/1829-esp32-wifi-bluetooth.html
 [img[https://i.imgur.com/ld8JJUW.jpg]]
 
 [img[https://i.imgur.com/gohLaXU.jpg]]</pre>
+</div>
+<div created="20201217010708557" creator="ckshadow" modified="20201217015157140" modifier="ckshadow" tags="ESP32" title="IFTTT簡介">
+<pre>物聯網時代，許許多多的智慧家電都支援物聯網功能，而其中IFTTT這個服務也成為許多家電的指定控制服務。今天我們來稍微介紹一下IFTTT這個東西，以及討論他的優缺點。
+
+&gt;本文中不牽涉任何程式操作IFTTT的技巧，僅介紹IFTTT的運作機制。
+
+IFTTT是“If This, Then That.”的縮寫，代表「若發生這個事件，則執行那個動作」
+
+其核心理念是「讓網際網路為你工作（”Put the Internet to work for you”）」，自動串聯手機App、網站和硬體裝置。
+
+原本，要在程式中控制其實可以把金鑰寫成POST去控制那些東西，只是必須自己寫送出的格式跟把要上傳（假設有）的檔案編成字串發送過去。
+因為這個過程每一家要求不一，且記憶大量金鑰很麻煩，因此IFTTT才出現。
+
+原理上是架設一個代理server，幫你記憶一堆金鑰和做好各種不同包的寫法，讓你只需要記IFTTT的金鑰，就可以控制各種不同網站的服務。
+
+例如LINE Notify，我們在不同主板上實作過很多樣子，最裸的形式應該是ESP32版本的。詳見PlayAPCS套件：
+
+https://www.playrobot.com/playrobot/2734-playapcs-esp32.html
+
+當然，每一種服務寫一個POST請求非常鳥，於是IFTTT的創始者就想到一個方式：讓所有的請求統一送到某個網站，而不同目標網站的POST則由這個統一收的網站再轉發：
+
+[img[https://i.imgur.com/egSQ81B.png]]
+
+而這使用的是IFTTT的Webhooks服務，能讓使用者自訂的程式串連其他服務。一般來說，寫程式呼叫都是走這個通道。
+
+優點：
+
+* 簡化且一致了封包撰寫流程
+* 大部分的處理可以網頁上完成，甚至支援直接網站&gt;網站的處理
+* 申請方便，綁定也方便
+* 直接網頁授權即可
+
+缺點：
+
+* 巨大的資安疑慮：因所有API的金鑰都交由IFTTT伺服器管理，只要掌握IFTTT就可以掌握所有用這個服務的用戶。
+* 不支援複雜度很高的處理
+* IFTTT掛了跟著的服務就停掉了</pre>
 </div>
 <div created="20190902070415283" modified="20190902070635122" tags="開發板" title="Mega2560">
 <pre>測試用子條目</pre>
